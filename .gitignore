@@ -1,0 +1,23 @@
+# Lean / Lake build artifacts
+.lake/
+*.olean
+*.ilean
+*.c
+*.o
+
+# TeX / paper build artifacts
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+**/main.pdf
+
+# macOS
+.DS_Store
+
+# editor-local
+.vscode/
+.idea/

@@ -1,0 +1,21 @@
+name = "TotallyPositive"
+version = "0.1.0"
+keywords = ["math"]
+defaultTargets = ["Showcase", "Showcase_WithProofs"]
+
+[leanOptions]
+relaxedAutoImplicit = false
+
+[[lean_lib]]
+name = "LeanCode"
+
+[[lean_lib]]
+name = "Showcase"
+
+[[lean_lib]]
+name = "Showcase_WithProofs"
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.31.0"
