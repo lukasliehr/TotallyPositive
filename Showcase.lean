@@ -1,6 +1,11 @@
 module
 
-public import Mathlib
+-- The first import is needed for the instances on ℂ to agree with those in Showcase_WithProofs.lean, which imports all of Mathlib.
+public import Mathlib.Analysis.CStarAlgebra.Classes
+public import Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic
+public import Mathlib.LinearAlgebra.Matrix.Determinant.Basic
+public import Mathlib.MeasureTheory.Function.L2Space
+public import Mathlib.MeasureTheory.Measure.Lebesgue.Basic
 
 @[expose] public section
 
