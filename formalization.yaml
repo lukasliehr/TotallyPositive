@@ -4,9 +4,10 @@ version: "v0.4"
 project:
   name: "Gabor Frames of Totally Positive Functions"
   description: >-
-    We prove in Lean 4 that if g : ℝ → ℝ is a continuous, integrable and
-    totally positive function and if α, β > 0 satisfy αβ < 1, then the Gabor
-    system {e^{2πiβnx} g(x − αm) : m, n ∈ ℤ} is a frame for L²(ℝ). This is the
+    We formally verify in Lean 4 the following statement: if g : ℝ → ℝ is a
+    continuous, integrable and totally positive function and if α, β > 0
+    satisfy αβ < 1, then the Gabor system
+    {e^{2πiβnx} g(x − αm) : m, n ∈ ℤ} is a frame for L²(ℝ). This is the
     new implication in the solution of the frame set problem for totally
     positive functions, which is Theorem 1.1 of the paper "Gabor Frames of
     Totally Positive Functions: A Complete Characterization" by de Dios Pont,
