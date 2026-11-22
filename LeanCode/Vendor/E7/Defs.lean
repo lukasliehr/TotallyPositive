@@ -1,13 +1,11 @@
-import LeanCode.Vendor.E7.Operators
-import LeanCode.Vendor.E7.Decay
-import LeanCode.Vendor.E7.SchurBound
+module
 
+public import LeanCode.Vendor.E7.Operators
+public import LeanCode.Vendor.E7.Decay
+public import LeanCode.Vendor.E7.SchurBound
+public import Mathlib.LinearAlgebra.FiniteDimensional.Defs
 
-
-
-
-
-
+@[expose] public section
 
 open scoped ENNReal
 open Classical

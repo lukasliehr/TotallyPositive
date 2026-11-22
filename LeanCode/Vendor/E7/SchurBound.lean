@@ -1,12 +1,10 @@
-import LeanCode.Vendor.E7.Operators
-import LeanCode.Vendor.E7.Decay
-import Mathlib.Analysis.Normed.Operator.Basic
+module
 
+public import LeanCode.Vendor.E7.Operators
+public import LeanCode.Vendor.E7.Decay
+public import Mathlib.Analysis.Normed.Operator.Basic
 
-
-
-
-
+@[expose] public section
 
 open scoped ENNReal
 noncomputable section

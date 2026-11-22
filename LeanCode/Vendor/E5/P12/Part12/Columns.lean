@@ -1,7 +1,12 @@
-import LeanCode.Vendor.E5.P12.Part12.Defs
-import LeanCode.Vendor.E5.P12.Part12.Envelope
-import LeanCode.Vendor.E5.P12.Part12.ParitySplit
-import LeanCode.Vendor.E5.Defs
+module
+
+public import LeanCode.Vendor.E5.P12.Part12.Defs
+public import LeanCode.Vendor.E5.P12.Part12.Envelope
+public import LeanCode.Vendor.E5.P12.Part12.ParitySplit
+public import LeanCode.Vendor.E5.Defs
+
+@[expose] public section
+
 open VendorE5
 
 open MeasureTheory

@@ -1,4 +1,8 @@
-import LeanCode.Vendor.E4.DFP.Defs
+module
+
+public import LeanCode.Vendor.E4.DFP.Defs
+
+@[expose] public section
 
 open scoped BigOperators
 open Filter Topology

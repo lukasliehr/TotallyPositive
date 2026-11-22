@@ -1,4 +1,8 @@
-import LeanCode.Vendor.E6.LinftySurjectivity
+module
+
+public import LeanCode.Vendor.E6.LinftySurjectivity
+
+@[expose] public section
 
 noncomputable section
 

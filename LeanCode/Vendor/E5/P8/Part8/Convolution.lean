@@ -1,5 +1,9 @@
-import LeanCode.Vendor.E5.P8.Part8.Kernels
-import LeanCode.Vendor.E5.Defs
+module
+
+public import LeanCode.Vendor.E5.P8.Part8.Kernels
+public import LeanCode.Vendor.E5.Defs
+
+@[expose] public section
 
 open MeasureTheory
 open scoped BigOperators
@@ -242,7 +246,7 @@ private theorem integrable_exp_neg_mul_abs_aux (a : ℝ) (ha : 0 < a) :
       fun t : ℝ => (1 / a) * expKernel a t + (1 / a) * expKernel (-a) t := by
     have hne0_ae : ∀ᵐ t : ℝ ∂volume, t ≠ 0 := by
       rw [ae_iff]
-      simp [MeasureTheory.NoAtoms.measure_singleton (μ := volume) (0 : ℝ)]
+      simp [MeasureTheory.NullSingletonClass.measure_singleton (μ := volume) (0 : ℝ)]
     filter_upwards [hne0_ae] with t ht0
     rcases lt_or_gt_of_ne ht0.symm with ht | ht
     · have ht_nonneg : 0 ≤ t := le_of_lt ht

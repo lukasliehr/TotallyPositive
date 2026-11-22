@@ -1,5 +1,10 @@
-import Mathlib
-import LeanCode
+module
+
+public import Mathlib
+public import LeanCode
+
+@[expose] public section
+
 open MeasureTheory
 open scoped ENNReal InnerProductSpace
 

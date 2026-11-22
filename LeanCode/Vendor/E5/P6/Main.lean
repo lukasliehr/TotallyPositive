@@ -1,7 +1,9 @@
-import LeanCode.Vendor.E5.P6.Part6.Basic
-import LeanCode.Vendor.E5.P6.Part6.Products
-import LeanCode.Vendor.E5.P6.Part6.PolyTools
-import LeanCode.Vendor.E5.P6.Part6.Jensen
-import LeanCode.Vendor.E5.P6.Part6.Convergence
-import LeanCode.Vendor.E5.P6.Part6.Main
-import LeanCode.Vendor.E5.Defs
+module
+
+public import LeanCode.Vendor.E5.P6.Part6.Basic
+public import LeanCode.Vendor.E5.P6.Part6.Products
+public import LeanCode.Vendor.E5.P6.Part6.PolyTools
+public import LeanCode.Vendor.E5.P6.Part6.Jensen
+public import LeanCode.Vendor.E5.P6.Part6.Convergence
+public import LeanCode.Vendor.E5.P6.Part6.Main
+public import LeanCode.Vendor.E5.Defs

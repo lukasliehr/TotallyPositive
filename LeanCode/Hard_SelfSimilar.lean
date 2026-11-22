@@ -1,29 +1,11 @@
-import LeanCode.E7Vocab
-import LeanCode.Construction
-import LeanCode.SelfSimilarPrereqs
-import LeanCode.Hard_OpnormL1
+module
 
+public import LeanCode.E7Vocab
+public import LeanCode.Construction
+public import LeanCode.SelfSimilarPrereqs
+public import LeanCode.Hard_OpnormL1
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@[expose] public section
 
 open Filter Topology
 open scoped ENNReal
@@ -414,7 +396,7 @@ theorem row_tsum_eq_finset (M : ℤ → ℤ → ℂ) (m : ℕ) (l : ℤ) :
 
 theorem row_tsum_summable (M : ℤ → ℤ → ℂ) (m : ℕ) (l : ℤ) :
     Summable (fun k : ℤ => ‖(if |k| ≤ (m:ℤ) then M k l else 0)‖) := by
-  apply summable_of_finite_support
+  apply summable_of_hasFiniteSupport
   apply Set.Finite.subset (Finset.Icc (-(m:ℤ)) (m:ℤ)).finite_toSet
   intro k hk
   simp only [Function.mem_support, ne_eq] at hk

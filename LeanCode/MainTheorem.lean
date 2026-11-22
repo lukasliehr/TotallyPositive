@@ -1,15 +1,9 @@
-import LeanCode.Conventions
-import LeanCode.Endgame
+module
 
+public import LeanCode.Conventions
+public import LeanCode.Endgame
 
-
-
-
-
-
-
-
-
+@[expose] public section
 
 open MeasureTheory
 

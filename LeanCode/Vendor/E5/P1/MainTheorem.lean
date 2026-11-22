@@ -1,6 +1,10 @@
-import LeanCode.Vendor.E5.P1.GlobalBound
-import LeanCode.Vendor.E5.P1.OneSidedDecay
-import LeanCode.Vendor.E5.Defs
+module
+
+public import LeanCode.Vendor.E5.P1.GlobalBound
+public import LeanCode.Vendor.E5.P1.OneSidedDecay
+public import LeanCode.Vendor.E5.Defs
+
+@[expose] public section
 
 noncomputable section
 

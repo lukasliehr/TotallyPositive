@@ -1,10 +1,10 @@
-import LeanCode.Vendor.E5.P5.Part5.Basic
-import LeanCode.Vendor.E5.P5.Part5.SignChanges
-import LeanCode.Vendor.E5.Defs
+module
 
+public import LeanCode.Vendor.E5.P5.Part5.Basic
+public import LeanCode.Vendor.E5.P5.Part5.SignChanges
+public import LeanCode.Vendor.E5.Defs
 
-
-
+@[expose] public section
 
 namespace Part5
 
@@ -74,7 +74,7 @@ theorem realrooted_bound (q : Polynomial ℝ) (hq : q ≠ 0) (hrr : RealRooted q
       = ∏ _j : Fin Q.natDegree, |z.im| := by
         rw [Finset.prod_const, Finset.card_univ, Fintype.card_fin, hdeg]
     _ ≤ ∏ j, ‖z - w j‖ := by
-        apply Finset.prod_le_prod
+        apply Finset.prod_le_prod₀
         · intro j _; exact abs_nonneg _
         · intro j _
           have him : (z - w j).im = z.im := by

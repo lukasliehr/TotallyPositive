@@ -1,4 +1,8 @@
-import LeanCode.Vendor.E6.Decay
+module
+
+public import LeanCode.Vendor.E6.Decay
+
+@[expose] public section
 
 noncomputable section
 

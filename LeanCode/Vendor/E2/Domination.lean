@@ -1,4 +1,8 @@
-import LeanCode.Vendor.E2.MatrixDefs
+module
+
+public import LeanCode.Vendor.E2.MatrixDefs
+
+@[expose] public section
 
 open scoped ENNReal
 
@@ -60,6 +64,7 @@ noncomputable def reindexLinearIsometryEquiv
         intro x y
         ext k
         simp
+        rfl
       map_smul' := by
         intro c x
         ext k

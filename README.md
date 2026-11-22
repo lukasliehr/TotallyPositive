@@ -24,6 +24,17 @@ integrable, and totally positive function, then the Gabor system $\mathcal G(g,\
   `LeanCode/Bridge_*.lean` files, so the library builds as a single self-contained
   package.
 
+## Palomar
+
+The repository follows the submission layout of the [Palomar registry](https://palomar-registry.org).
+
+- [Showcase.lean](Showcase.lean) is the Challenge module. It contains the statements and imports only Mathlib.
+- [Showcase_WithProofs.lean](Showcase_WithProofs.lean) is the Solution module.
+- [comparator.json](comparator.json) lists the compared declarations `gaborAtom_memL2` and `TPFrameSet` together with the permitted axioms.
+- [formalization.yaml](formalization.yaml) records the source, the scope and the production of the formalization.
+
+All Lean files use the Lean module system. The project is built with Lean `v4.35.0` and the matching Mathlib release.
+
 ## Build
 
 Use Lake from the repository root:
@@ -41,3 +52,7 @@ The internal library can also be built directly with:
 ```bash
 lake build LeanCode
 ```
+
+## License
+
+The repository is released under the Apache License 2.0 (see [LICENSE](LICENSE)).

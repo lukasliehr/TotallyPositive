@@ -1,5 +1,10 @@
-import LeanCode.Vendor.E5.P12.Part12.Columns
-import LeanCode.Vendor.E5.Defs
+module
+
+public import LeanCode.Vendor.E5.P12.Part12.Columns
+public import LeanCode.Vendor.E5.Defs
+
+@[expose] public section
+
 open VendorE5
 
 open MeasureTheory

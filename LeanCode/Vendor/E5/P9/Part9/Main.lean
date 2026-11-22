@@ -1,7 +1,12 @@
-import LeanCode.Vendor.E5.P9.Part9.Truncation
-import LeanCode.Vendor.E5.P9.Part9.Sample
-import LeanCode.Vendor.E5.P9.Part9.Comb
-import LeanCode.Vendor.E5.Defs
+module
+
+public import LeanCode.Vendor.E5.P9.Part9.Truncation
+public import LeanCode.Vendor.E5.P9.Part9.Sample
+public import LeanCode.Vendor.E5.P9.Part9.Comb
+public import LeanCode.Vendor.E5.Defs
+
+@[expose] public section
+
 open VendorE5
 
 open scoped BigOperators

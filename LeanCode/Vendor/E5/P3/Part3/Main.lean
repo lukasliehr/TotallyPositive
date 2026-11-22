@@ -1,6 +1,10 @@
-import LeanCode.Vendor.E5.P3.Part3.ColumnSpace
-import LeanCode.Vendor.E5.P3.Part3.Blocks
-import LeanCode.Vendor.E5.Defs
+module
+
+public import LeanCode.Vendor.E5.P3.Part3.ColumnSpace
+public import LeanCode.Vendor.E5.P3.Part3.Blocks
+public import LeanCode.Vendor.E5.Defs
+
+@[expose] public section
 
 open MeasureTheory
 

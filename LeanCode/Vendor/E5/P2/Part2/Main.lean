@@ -1,6 +1,10 @@
-import LeanCode.Vendor.E5.P2.Part2.Continuity
-import LeanCode.Vendor.E5.P2.Part2.Algebra
-import LeanCode.Vendor.E5.Defs
+module
+
+public import LeanCode.Vendor.E5.P2.Part2.Continuity
+public import LeanCode.Vendor.E5.P2.Part2.Algebra
+public import LeanCode.Vendor.E5.Defs
+
+@[expose] public section
 
 open MeasureTheory
 

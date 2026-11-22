@@ -1,5 +1,9 @@
-import LeanCode.Vendor.E6.Defs
-import LeanCode.Vendor.E2
+module
+
+public import LeanCode.Vendor.E6.Defs
+public import LeanCode.Vendor.E2
+
+@[expose] public section
 
 open scoped ENNReal
 

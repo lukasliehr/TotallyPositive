@@ -1,4 +1,8 @@
-import LeanCode.Vendor.E1.Defs
+module
+
+public import LeanCode.Vendor.E1.Defs
+
+@[expose] public section
 
 noncomputable section
 

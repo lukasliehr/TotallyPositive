@@ -1,15 +1,8 @@
-import LeanCode.E7Vocab
+module
 
+public import LeanCode.E7Vocab
 
-
-
-
-
-
-
-
-
-
+@[expose] public section
 
 open scoped ENNReal
 open Classical

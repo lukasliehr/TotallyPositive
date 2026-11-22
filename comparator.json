@@ -1,0 +1,6 @@
+{
+  "challenge_module": "Showcase",
+  "solution_module": "Showcase_WithProofs",
+  "theorem_names": ["gaborAtom_memL2", "TPFrameSet"],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"]
+}

@@ -1,28 +1,13 @@
-import LeanCode.Vocab
-import LeanCode.Bridge_E1
-import LeanCode.Bridge_E2
-import LeanCode.Bridge_E3
-import LeanCode.Bridge_E5
-import LeanCode.Bridge_E6
+module
 
+public import LeanCode.Vocab
+public import LeanCode.Bridge_E1
+public import LeanCode.Bridge_E2
+public import LeanCode.Bridge_E3
+public import LeanCode.Bridge_E5
+public import LeanCode.Bridge_E6
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@[expose] public section
 
 open Matrix
 open MeasureTheory

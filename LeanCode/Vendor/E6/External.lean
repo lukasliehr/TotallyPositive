@@ -1,22 +1,13 @@
-import LeanCode.Vendor.E6.Defs
-import LeanCode.Vendor.E1
-import LeanCode.Vendor.E2
-import LeanCode.Vendor.E4
-import LeanCode.Vendor.E5
-import LeanCode.Hard_E6Surj_A
+module
 
+public import LeanCode.Vendor.E6.Defs
+public import LeanCode.Vendor.E1
+public import LeanCode.Vendor.E2
+public import LeanCode.Vendor.E4
+public import LeanCode.Vendor.E5
+public import LeanCode.Hard_E6Surj_A
 
-
-
-
-
-
-
-
-
-
-
-
+@[expose] public section
 
 noncomputable section
 

@@ -1,6 +1,11 @@
-import LeanCode.Vendor.E5.P5.Part5.Basic
-import LeanCode.Vendor.E5.P5.Part5.SignChanges
-import LeanCode.Vendor.E5.Defs
+module
+
+public import LeanCode.Vendor.E5.P5.Part5.Basic
+public import LeanCode.Vendor.E5.P5.Part5.SignChanges
+public import LeanCode.Vendor.E5.Defs
+
+@[expose] public section
+
 open VendorE5
 
 
@@ -382,7 +387,7 @@ theorem integral_VD (h3 : Statement_Part_3) (g : ℝ → ℝ) (hg : Continuous g
   have hδpos : 0 < δ := by
     rw [hδ_def]
     apply mul_pos (by norm_num)
-    rw [Finset.lt_inf'_iff]
+    refine (Finset.lt_inf'_iff _).mpr ?_
     intro i _
     exact abs_pos.mpr (hne i)
   have hsign : ∀ i : Fin (s + 1), |ε * (-1 : ℝ) ^ (i : ℕ)| = 1 := by

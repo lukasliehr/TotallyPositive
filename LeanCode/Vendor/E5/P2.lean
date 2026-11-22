@@ -1,3 +1,5 @@
-import LeanCode.Vendor.E5.P2.Main
-import LeanCode.Vendor.E5.P2.MainTheorem
-import LeanCode.Vendor.E5.Defs
+module
+
+public import LeanCode.Vendor.E5.P2.Main
+public import LeanCode.Vendor.E5.P2.MainTheorem
+public import LeanCode.Vendor.E5.Defs

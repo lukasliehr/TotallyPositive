@@ -1,21 +1,8 @@
-import LeanCode.ExternalInputs
+module
 
+public import LeanCode.ExternalInputs
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@[expose] public section
 
 open Real
 open MeasureTheory

@@ -1,4 +1,8 @@
-import LeanCode.Vendor.E2.MatrixDefs
+module
+
+public import LeanCode.Vendor.E2.MatrixDefs
+
+@[expose] public section
 
 open scoped ENNReal NNReal
 

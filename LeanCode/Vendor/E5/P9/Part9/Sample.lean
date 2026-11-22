@@ -1,16 +1,9 @@
-import LeanCode.Vendor.E5.P9.Part9.Defs
-import LeanCode.Vendor.E5.Defs
+module
 
+public import LeanCode.Vendor.E5.P9.Part9.Defs
+public import LeanCode.Vendor.E5.Defs
 
-
-
-
-
-
-
-
-
-
+@[expose] public section
 
 noncomputable def sample (u : Fin 4 → ℝ) (M : ℕ) : Fin (4 * (2 * M + 1)) → ℝ :=
   fun i => u ⟨(i : ℕ) % 4, by omega⟩ + (2 * (((i : ℕ) / 4 : ℕ) : ℝ) - 2 * (M : ℝ))

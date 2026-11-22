@@ -1,24 +1,10 @@
-import LeanCode.Vendor.E2
-import LeanCode.Vocab
-import LeanCode.Base
+module
 
+public import LeanCode.Vendor.E2
+public import LeanCode.Vocab
+public import LeanCode.Base
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@[expose] public section
 
 open scoped ENNReal
 

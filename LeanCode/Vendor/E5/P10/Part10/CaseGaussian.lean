@@ -1,6 +1,10 @@
-import Mathlib.Analysis.Fourier.AddCircle
-import LeanCode.Vendor.E5.P10.Part10.Kernels
-import LeanCode.Vendor.E5.Defs
+module
+
+public import Mathlib.Analysis.Fourier.AddCircle
+public import LeanCode.Vendor.E5.P10.Part10.Kernels
+public import LeanCode.Vendor.E5.Defs
+
+@[expose] public section
 
 open MeasureTheory
 

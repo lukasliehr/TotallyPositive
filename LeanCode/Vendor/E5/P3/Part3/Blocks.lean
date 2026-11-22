@@ -1,5 +1,9 @@
-import LeanCode.Vendor.E5.P3.Part3.Basic
-import LeanCode.Vendor.E5.Defs
+module
+
+public import LeanCode.Vendor.E5.P3.Part3.Basic
+public import LeanCode.Vendor.E5.Defs
+
+@[expose] public section
 
 open MeasureTheory
 open scoped Classical

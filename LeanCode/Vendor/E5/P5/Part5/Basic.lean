@@ -1,5 +1,10 @@
-import Mathlib
-import LeanCode.Vendor.E5.Defs
+module
+
+public import Mathlib
+public import LeanCode.Vendor.E5.Defs
+
+@[expose] public section
+
 open VendorE5
 
 open MeasureTheory

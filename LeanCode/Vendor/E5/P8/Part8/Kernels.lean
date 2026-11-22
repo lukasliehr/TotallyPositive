@@ -1,6 +1,10 @@
-import LeanCode.Vendor.E5.P8.Part8.Lattice
-import Mathlib.Analysis.SumIntegralExpDecay
-import LeanCode.Vendor.E5.Defs
+module
+
+public import LeanCode.Vendor.E5.P8.Part8.Lattice
+public import Mathlib.Analysis.SumIntegralExpDecay
+public import LeanCode.Vendor.E5.Defs
+
+@[expose] public section
 
 open MeasureTheory
 open scoped BigOperators
@@ -125,7 +129,7 @@ theorem p_int (a : ℝ) (ha : a ≠ 0) :
       have hpos_branch := hp.1 ha_pos
       have hne0_ae : ∀ᵐ t : ℝ ∂volume, t ≠ 0 := by
         rw [ae_iff]
-        simp [MeasureTheory.NoAtoms.measure_singleton (μ := volume) (0 : ℝ)]
+        simp [MeasureTheory.NullSingletonClass.measure_singleton (μ := volume) (0 : ℝ)]
       filter_upwards [hne0_ae] with t ht0
       by_cases htpos : 0 < t
       · have htmem : t ∈ Set.Ioi (0 : ℝ) := htpos
@@ -262,7 +266,7 @@ theorem p_FT (a : ℝ) (ha : a ≠ 0) :
             (fun t => (a : ℂ) * Complex.exp (z * t)) t := by
         have hne0_ae : ∀ᵐ t : ℝ ∂volume, t ≠ 0 := by
           rw [ae_iff]
-          simp [MeasureTheory.NoAtoms.measure_singleton (μ := volume) (0 : ℝ)]
+          simp [MeasureTheory.NullSingletonClass.measure_singleton (μ := volume) (0 : ℝ)]
         filter_upwards [hne0_ae] with t ht0
         by_cases htpos : 0 < t
         · have htmem : t ∈ Set.Ioi (0 : ℝ) := htpos
@@ -588,7 +592,7 @@ private theorem expKernel_pos_ae_two (a : ℝ) (ha : 0 < a) :
 private theorem exp_pos_moment_one_integrable {a : ℝ} (ha : 0 < a) :
     IntegrableOn (fun t : ℝ => t * Real.exp (-(a * t))) (Set.Ioi 0) := by
   have h := integrableOn_rpow_mul_exp_neg_mul_rpow (p := 1) (s := 1) (b := a)
-    (by norm_num : (-1 : ℝ) < 1) (by norm_num : (1 : ℝ) ≤ 1) ha
+    (by norm_num : (-1 : ℝ) < 1) (by norm_num : (0 : ℝ) < 1) ha
   refine h.congr_fun ?_ measurableSet_Ioi
   intro t _ht
   simp [Real.rpow_one]
@@ -596,7 +600,7 @@ private theorem exp_pos_moment_one_integrable {a : ℝ} (ha : 0 < a) :
 private theorem exp_pos_moment_two_integrable {a : ℝ} (ha : 0 < a) :
     IntegrableOn (fun t : ℝ => t ^ 2 * Real.exp (-(a * t))) (Set.Ioi 0) := by
   have h := integrableOn_rpow_mul_exp_neg_mul_rpow (p := 1) (s := 2) (b := a)
-    (by norm_num : (-1 : ℝ) < 2) (by norm_num : (1 : ℝ) ≤ 1) ha
+    (by norm_num : (-1 : ℝ) < 2) (by norm_num : (0 : ℝ) < 1) ha
   refine h.congr_fun ?_ measurableSet_Ioi
   intro t _ht
   simp [Real.rpow_one]

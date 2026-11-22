@@ -1,4 +1,8 @@
-import LeanCode.Vendor.E3.Summability
+module
+
+public import LeanCode.Vendor.E3.Summability
+
+@[expose] public section
 
 open scoped ENNReal
 

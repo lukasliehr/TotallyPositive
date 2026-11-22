@@ -1,8 +1,10 @@
-import LeanCode.Vendor.E5.P7.Part7.Basic
-import LeanCode.Vendor.E5.P7.Part7.Laplace
-import LeanCode.Vendor.E5.Defs
+module
 
+public import LeanCode.Vendor.E5.P7.Part7.Basic
+public import LeanCode.Vendor.E5.P7.Part7.Laplace
+public import LeanCode.Vendor.E5.Defs
 
+@[expose] public section
 
 namespace Part7
 

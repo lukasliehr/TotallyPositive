@@ -1,5 +1,9 @@
-import LeanCode.Vendor.E2.Pairing
-import LeanCode.Vendor.E2.BanachFacts
+module
+
+public import LeanCode.Vendor.E2.Pairing
+public import LeanCode.Vendor.E2.BanachFacts
+
+@[expose] public section
 
 open scoped ENNReal NNReal
 
@@ -370,6 +374,7 @@ lemma ellOneInfinityPairingCLM_apply
     ellOneInfinityPairingCLM x b =
       lpPairing (1 : ℝ≥0∞) (∞ : ℝ≥0∞) x b := by
   simp [ellOneInfinityPairingCLM, lp.dualPairing_apply, lpPairing]
+  rfl
 
 lemma conjugateExponent_one_eq_top :
     (∞ : ℝ≥0∞) = conjugateExponent (1 : ℝ≥0∞) := by

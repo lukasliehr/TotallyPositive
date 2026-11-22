@@ -1,22 +1,9 @@
-import LeanCode.Vendor.E1
-import LeanCode.Base
+module
 
+public import LeanCode.Vendor.E1
+public import LeanCode.Base
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@[expose] public section
 
 noncomputable section
 

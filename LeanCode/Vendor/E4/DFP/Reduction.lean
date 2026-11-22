@@ -1,4 +1,8 @@
-import LeanCode.Vendor.E4.DFP.FiniteCore
+module
+
+public import LeanCode.Vendor.E4.DFP.FiniteCore
+
+@[expose] public section
 
 open scoped BigOperators
 

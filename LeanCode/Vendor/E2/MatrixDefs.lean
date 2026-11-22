@@ -1,4 +1,8 @@
-import LeanCode.Vendor.E2.Basic
+module
+
+public import LeanCode.Vendor.E2.Basic
+
+@[expose] public section
 
 open scoped ENNReal
 

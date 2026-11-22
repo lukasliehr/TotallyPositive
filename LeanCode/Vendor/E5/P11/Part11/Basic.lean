@@ -1,21 +1,9 @@
-import Mathlib
-import LeanCode.Vendor.E5.Defs
+module
 
+public import Mathlib
+public import LeanCode.Vendor.E5.Defs
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@[expose] public section
 
 theorem witness (F : ℝ → ℝ) (t₀ t₁ t₂ t₃ : ℝ)
     (h01 : t₀ < t₁) (h12 : t₁ < t₂) (h23 : t₂ < t₃) (hwin : t₃ < t₀ + 2)

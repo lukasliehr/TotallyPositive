@@ -1,5 +1,9 @@
-import LeanCode.Vendor.E4.DFP.Decay
-import LeanCode.Vendor.E4.DFP.Reduction
+module
+
+public import LeanCode.Vendor.E4.DFP.Decay
+public import LeanCode.Vendor.E4.DFP.Reduction
+
+@[expose] public section
 
 noncomputable section
 

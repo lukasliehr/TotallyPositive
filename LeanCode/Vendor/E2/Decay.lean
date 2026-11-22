@@ -1,4 +1,8 @@
-import LeanCode.Vendor.E2.Bridges
+module
+
+public import LeanCode.Vendor.E2.Bridges
+
+@[expose] public section
 
 open scoped ENNReal
 

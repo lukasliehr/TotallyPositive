@@ -1,4 +1,8 @@
-import LeanCode.Vendor.E1.IntegralEstimates
+module
+
+public import LeanCode.Vendor.E1.IntegralEstimates
+
+@[expose] public section
 
 noncomputable section
 

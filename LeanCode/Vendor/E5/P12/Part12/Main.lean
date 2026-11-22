@@ -1,6 +1,11 @@
-import LeanCode.Vendor.E5.P12.Part12.Ratio
-import LeanCode.Vendor.E5.P12.Part12.Existence
-import LeanCode.Vendor.E5.Defs
+module
+
+public import LeanCode.Vendor.E5.P12.Part12.Ratio
+public import LeanCode.Vendor.E5.P12.Part12.Existence
+public import LeanCode.Vendor.E5.Defs
+
+@[expose] public section
+
 open VendorE5
 
 open MeasureTheory

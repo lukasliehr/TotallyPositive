@@ -1,9 +1,11 @@
-import LeanCode.Vendor.E5.P7.Part7.Basic
-import LeanCode.Vendor.E5.P7.Part7.ProdHelpers
-import LeanCode.Vendor.E5.P7.Part7.Psi
-import LeanCode.Vendor.E5.Defs
+module
 
+public import LeanCode.Vendor.E5.P7.Part7.Basic
+public import LeanCode.Vendor.E5.P7.Part7.ProdHelpers
+public import LeanCode.Vendor.E5.P7.Part7.Psi
+public import LeanCode.Vendor.E5.Defs
 
+@[expose] public section
 
 namespace Part7
 

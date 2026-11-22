@@ -1,7 +1,11 @@
-import LeanCode.Vendor.E5.P6.Part6.Basic
-import LeanCode.Vendor.E5.P6.Part6.PolyTools
-import LeanCode.Vendor.E5.P6.Part6.Jensen
-import LeanCode.Vendor.E5.Defs
+module
+
+public import LeanCode.Vendor.E5.P6.Part6.Basic
+public import LeanCode.Vendor.E5.P6.Part6.PolyTools
+public import LeanCode.Vendor.E5.P6.Part6.Jensen
+public import LeanCode.Vendor.E5.Defs
+
+@[expose] public section
 
 open scoped BigOperators
 
@@ -81,7 +85,7 @@ theorem normal_bound : ∀ (J : ℕ) (lam : ℕ → ℝ) (A M R : ℝ),
   have hHead : (∏ j ∈ I, ‖(1 : ℂ) + (lam j : ℂ) * z‖) ≤ Real.exp (2 * R ^ 2 * M) := by
     have hnn : ∀ j ∈ I, (0:ℝ) ≤ ‖(1 : ℂ) + (lam j : ℂ) * z‖ := fun j _ => norm_nonneg _
     calc (∏ j ∈ I, ‖(1 : ℂ) + (lam j : ℂ) * z‖)
-        ≤ ∏ j ∈ I, Real.exp (|lam j| * R) := Finset.prod_le_prod hnn hHead_factor_le
+        ≤ ∏ j ∈ I, Real.exp (|lam j| * R) := Finset.prod_le_prod₀ hnn hHead_factor_le
       _ = Real.exp (∑ j ∈ I, |lam j| * R) := by rw [← Real.exp_sum]
       _ ≤ Real.exp (2 * R ^ 2 * M) := by
           apply Real.exp_le_exp.mpr

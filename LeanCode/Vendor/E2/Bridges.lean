@@ -1,6 +1,10 @@
-import LeanCode.Vendor.E2.Localization
-import LeanCode.Vendor.E2.BanachFacts
-import LeanCode.Vendor.E2.Duality
+module
+
+public import LeanCode.Vendor.E2.Localization
+public import LeanCode.Vendor.E2.BanachFacts
+public import LeanCode.Vendor.E2.Duality
+
+@[expose] public section
 
 open scoped ENNReal
 

@@ -1,0 +1,122 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Gabor Frames of Totally Positive Functions"
+  description: >-
+    We prove in Lean 4 that if g : ℝ → ℝ is a continuous, integrable and
+    totally positive function and if α, β > 0 satisfy αβ < 1, then the Gabor
+    system {e^{2πiβnx} g(x − αm) : m, n ∈ ℤ} is a frame for L²(ℝ). This is the
+    new implication in the solution of the frame set problem for totally
+    positive functions, which is Theorem 1.1 of the paper "Gabor Frames of
+    Totally Positive Functions: A Complete Characterization" by de Dios Pont,
+    Gröchenig, Liehr, Shafkulovska and Taylor (arXiv:2608.04992). The converse
+    implication, namely that the frame property implies αβ < 1, is a classical
+    result and is not part of the formalization.
+  authors:
+    - "Jaume de Dios Pont"
+    - "Karlheinz Gröchenig"
+    - "Lukas Liehr"
+    - "Irina Shafkulovska"
+    - "Mitchell A. Taylor"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Lukas Liehr"
+
+classification:
+  arxiv: ["math.FA", "math.CA"]
+  msc2020: ["42A82", "42C15", "47A53"]
+
+sources:
+  - title: "Gabor Frames of Totally Positive Functions: A Complete Characterization"
+    authors:
+      - "Jaume de Dios Pont"
+      - "Karlheinz Gröchenig"
+      - "Lukas Liehr"
+      - "Irina Shafkulovska"
+      - "Mitchell A. Taylor"
+    id: "arXiv:2608.04992v1"
+    type: "paper"
+    location: "https://arxiv.org/abs/2608.04992v1"
+    relationship: "formalizes"
+    note: >-
+      The formalization proves the implication from αβ < 1 to the frame
+      property in Theorem 1.1. Section 6 of the paper describes the Lean
+      statement.
+    license: "CC-BY-4.0"
+    author_endorsement: "participated"
+
+related_formalizations: []
+
+status:
+  scope: >-
+    The compared theorem TPFrameSet is the implication from αβ < 1 to the
+    frame property in Theorem 1.1 of the source. The compared lemma
+    gaborAtom_memL2 states that every Gabor atom of a continuous, integrable
+    and totally positive function belongs to L²(ℝ), which is needed to define
+    the atoms as elements of L²(ℝ). The converse implication of Theorem 1.1
+    and the Kadets-type result in Theorem 1.2 of the source are not among the
+    compared declarations.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: []
+
+automation:
+  methods:
+    - method: "agent"
+      models: ["Codex 5.5", "Claude Opus 4.7"]
+      tool_setup: >-
+        Codex 5.5 and Claude Opus 4.7 were used to assist with the Lean
+        formalization.
+    - method: "agent"
+      models: ["Claude Fable 5.2"]
+      framework: "Claude Code"
+      tool_setup: >-
+        Update of the project from Lean v4.31.0 to Lean v4.35.0, port of all
+        source files to the Lean module system and repair of the proofs in 23
+        files which the update broke. The statements in Showcase.lean were
+        not changed.
+  notes: >-
+    The mathematical proof is due to the authors of the paper. The paper
+    states that all mathematical arguments, formalizations and technical
+    details were independently checked and written by the authors.
+
+fidelity:
+  divergences: >-
+    The source calls a function g : ℝ → ℝ totally positive if g is not
+    constant and det(g(x_j − y_k)) ≥ 0 for every n and all x_1 < ... < x_n and
+    y_1 < ... < y_n. The Lean definition IsTP requires g ≠ 0 instead of g
+    being not constant. For integrable g the two conditions agree, since the
+    only integrable constant function is zero. The sum in IsGaborFrame is an
+    iterated Mathlib tsum, which equals 0 for a family that is not summable.
+    Hence, the Lean statement does not assert the summability of the frame
+    coefficients as a separate claim. Only one implication of Theorem 1.1 is
+    formalized (see status.scope). No other divergence is known.
+
+review:
+  status: "author-verified"
+  notes: >-
+    The authors of the paper compared the statement file Showcase.lean with
+    Theorem 1.1 of the paper and confirmed that the Lean statement matches
+    the theorem. Section 6 of the paper explains every definition in that
+    file.
+
+alignment:
+  statements:
+    - source: "Theorem 1.1, implication from αβ < 1 to the frame property"
+      lean: "TPFrameSet"
+      module: "Showcase"
+      status: "proved"
+      note: >-
+        The hypothesis IsTPIntegrableContinuous g combines total positivity,
+        integrability and continuity of g. The conclusion IsGaborFrame is the
+        two-sided frame inequality with bounds 0 < A ≤ B.
+    - source: "Section 6.3, square-integrability of the Gabor atoms"
+      lean: "gaborAtom_memL2"
+      module: "Showcase"
+      status: "proved"
+      note: >-
+        Auxiliary lemma which is used in the definition of GaborAtom as an
+        element of L²(ℝ).
+
+acknowledgements: "The formalization builds on Mathlib."

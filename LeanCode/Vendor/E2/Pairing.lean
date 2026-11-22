@@ -1,4 +1,8 @@
-import LeanCode.Vendor.E2.Domination
+module
+
+public import LeanCode.Vendor.E2.Domination
+
+@[expose] public section
 
 open scoped ENNReal NNReal
 
@@ -36,6 +40,7 @@ lemma lpPairingCLM_apply
     lpPairingCLM p q hconj x y = lpPairing p q x y := by
   subst q
   simp [lpPairingCLM, lp.dualPairing_apply, lpPairing]
+  rfl
 
 lemma lpPairing_smul_left
     (p q : ℝ≥0∞) [Fact (1 ≤ p)] [Fact (1 ≤ q)]

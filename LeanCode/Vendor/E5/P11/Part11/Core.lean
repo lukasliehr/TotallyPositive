@@ -1,20 +1,9 @@
-import LeanCode.Vendor.E5.P11.Part11.Basic
-import LeanCode.Vendor.E5.Defs
+module
 
+public import LeanCode.Vendor.E5.P11.Part11.Basic
+public import LeanCode.Vendor.E5.Defs
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+@[expose] public section
 
 theorem one_transport (R : ℝ → ℝ) (hfe : ∀ x : ℝ, R (x + 1) = (R x)⁻¹)
     (x : ℝ) (hx : R x = 1) : R (x + 1) = 1 := by

@@ -1,5 +1,9 @@
-import LeanCode.Vendor.E5.P8.Part8.Uniqueness
-import LeanCode.Vendor.E5.Defs
+module
+
+public import LeanCode.Vendor.E5.P8.Part8.Uniqueness
+public import LeanCode.Vendor.E5.Defs
+
+@[expose] public section
 
 open MeasureTheory
 open scoped BigOperators
@@ -267,8 +271,8 @@ private theorem finiteMeasureConv_isProbabilityMeasure (μ ν : Measure ℝ)
     [IsProbabilityMeasure μ] [IsProbabilityMeasure ν] :
     IsProbabilityMeasure (finiteMeasureConv μ ν) := by
   unfold finiteMeasureConv
-  exact Measure.isProbabilityMeasure_map (μ := μ.prod ν)
-    (by fun_prop : AEMeasurable (fun p : ℝ × ℝ => p.1 + p.2) (μ.prod ν))
+  exact (Measure.isProbabilityMeasure_map_iff (μ := μ.prod ν)
+    (by fun_prop : AEMeasurable (fun p : ℝ × ℝ => p.1 + p.2) (μ.prod ν))).2 inferInstance
 
 private theorem finiteMeasureConv_FT (μ ν : Measure ℝ) [IsFiniteMeasure μ] [IsFiniteMeasure ν] :
   ∀ ξ : ℝ, measureFT (finiteMeasureConv μ ν) ξ = measureFT μ ξ * measureFT ν ξ := by
@@ -783,11 +787,14 @@ private def tailShiftEmbedding (n : ℕ) : ℕ ↪ ℕ where
       simpa [Nat.add_assoc] using h
     exact Nat.add_right_cancel h'
 
+private theorem tailShiftEmbedding_apply (n r : ℕ) :
+    tailShiftEmbedding n r = r + n + 1 := rfl
+
 private theorem finiteTailIndexSet_eq_map_range (n k : ℕ) (hnk : n ≤ k) :
     finiteTailIndexSet n k =
       Finset.map (tailShiftEmbedding n) (Finset.range (k - n)) := by
   ext j
-  simp [finiteTailIndexSet, tailShiftEmbedding]
+  simp [finiteTailIndexSet, tailShiftEmbedding_apply]
   constructor
   · intro hj
     rcases hj with ⟨hle, hlt⟩
@@ -801,7 +808,7 @@ private theorem finiteTailIndexSet_sum_sq_eq_range (α' : ℕ → ℝ)
       ∑ r ∈ Finset.range (k - n), (α' (r + n + 1)) ^ 2 := by
   classical
   rw [finiteTailIndexSet_eq_map_range n k hnk]
-  simp [tailShiftEmbedding]
+  simp [tailShiftEmbedding_apply]
 
 private theorem finiteTailIndexSet_sum_sq_le_tailVariance (α' : ℕ → ℝ)
     (hsum : Summable (fun j : ℕ => (α' j) ^ 2)) (n k : ℕ) (hnk : n ≤ k) :
@@ -869,9 +876,9 @@ private theorem finiteTailSum_law_isProbabilityMeasure (μ : ℕ → Measure ℝ
     (hμprob : ∀ j : ℕ, IsProbabilityMeasure (μ j)) (m N : ℕ) :
     IsProbabilityMeasure (Measure.map (finiteTailSum m N) (Measure.infinitePi μ)) := by
   letI : ∀ j : ℕ, IsProbabilityMeasure (μ j) := hμprob
-  exact Measure.isProbabilityMeasure_map
+  exact (Measure.isProbabilityMeasure_map_iff
     (μ := Measure.infinitePi μ)
-    (measurable_finiteTailSum m N).aemeasurable
+    (measurable_finiteTailSum m N).aemeasurable).2 inferInstance
 
 private theorem finiteTailSum_law_measureFT (α' : ℕ → ℝ) (μ : ℕ → Measure ℝ)
     (hμ : ∀ j : ℕ, KernelLaw (α' j) (μ j)) (m N : ℕ) :
@@ -1132,7 +1139,7 @@ private theorem memLp_two_norm_sq_eq_integral_sq {Ω : Type*} [MeasurableSpace �
     (P : Measure Ω) (f : Ω → ℝ) (hf : MemLp f 2 P) :
     ‖hf.toLp f‖ ^ 2 = ∫ ω, f ω ^ 2 ∂P := by
   rw [Lp.norm_toLp]
-  rw [toReal_eLpNorm hf.aestronglyMeasurable]
+  rw [toReal_eLpNorm]
   rw [lpNorm_eq_integral_norm_rpow_toReal (p := (2 : ℝ≥0∞))
     (by norm_num) (by norm_num) hf.aestronglyMeasurable]
   norm_num
@@ -1296,7 +1303,6 @@ private theorem finiteTailSum_tendsto_L1_tailLpLimit (α' : ℕ → ℝ)
         exact eLpNorm_le_eLpNorm_of_exponent_le
           (μ := P) (f := ⇑fN - ⇑S) (p := 1) (q := 2)
           (by norm_num)
-          ((Lp.aestronglyMeasurable fN).sub (Lp.aestronglyMeasurable S))
 
 private theorem finiteTailExp_tendsto_L1_tailLpLimit (α' : ℕ → ℝ)
     (μ : ℕ → Measure ℝ) (hμ : ∀ j : ℕ, KernelLaw (α' j) (μ j))
@@ -1374,7 +1380,11 @@ private theorem finiteTailExp_tendsto_L1_tailLpLimit (α' : ℕ → ℝ)
             (fun ω : ℕ → ℝ =>
               c • (finiteTailSum m N ω - S ω))
             1 P := by
-        apply eLpNorm_mono_ae
+        have hmeasN : AEStronglyMeasurable (fun ω : ℕ → ℝ => finiteTailSum m N ω) P :=
+          (measurable_finiteTailSum m N).aestronglyMeasurable
+        have hmeasS : AEStronglyMeasurable (fun ω : ℕ → ℝ => S ω) P :=
+          Lp.aestronglyMeasurable S
+        refine eLpNorm_mono_ae (AEStronglyMeasurable.sub (by fun_prop) (by fun_prop)) ?_
         filter_upwards with ω
         have hlip := exp_lip (c * finiteTailSum m N ω) (c * S ω)
         simpa [Pi.sub_apply, Real.norm_eq_abs, smul_eq_mul, mul_sub] using hlip
@@ -1413,8 +1423,8 @@ private theorem tailLimitMeasure_isProbabilityMeasure (α' : ℕ → ℝ)
   haveI : IsProbabilityMeasure (Measure.infinitePi μ) :=
     infinitePi_isProbabilityMeasure μ hμprob
   unfold tailLimitMeasure
-  exact Measure.isProbabilityMeasure_map
-    (Lp.aestronglyMeasurable (tailLpLimit α' μ hμ hsum m)).aemeasurable
+  exact (Measure.isProbabilityMeasure_map_iff
+    (Lp.aestronglyMeasurable (tailLpLimit α' μ hμ hsum m)).aemeasurable).2 inferInstance
 
 private theorem tailLimitMeasure_second_moment (α' : ℕ → ℝ)
     (μ : ℕ → Measure ℝ) (hμ : ∀ j : ℕ, KernelLaw (α' j) (μ j))
@@ -1492,7 +1502,6 @@ private theorem tailLimitMeasure_mean_zero (α' : ℕ → ℝ)
         Filter.atTop (𝓝 (∫ ω : ℕ → ℝ, S ω ∂P)) := by
     exact MeasureTheory.tendsto_integral_of_L1'
       (fun ω : ℕ → ℝ => S ω)
-      (Lp.aestronglyMeasurable S)
       (Filter.Eventually.of_forall (fun N => by
         simpa [P] using (finiteTailSum_integral α' μ hμ m N).1))
       (by
@@ -1532,7 +1541,6 @@ private theorem tailLimitMeasure_charfun (α' : ℕ → ℝ)
         (𝓝 (∫ ω : ℕ → ℝ, Complex.exp (Complex.I * (c * S ω)) ∂P)) := by
     exact MeasureTheory.tendsto_integral_of_L1'
       (fun ω : ℕ → ℝ => Complex.exp (Complex.I * (c * S ω)))
-      (by fun_prop)
       (Filter.Eventually.of_forall (fun N =>
         integrable_complex_exp_I_mul P
           (measurable_finiteTailSum m N).aestronglyMeasurable c))
@@ -1729,8 +1737,8 @@ theorem chain_meas (α' : ℕ → ℝ) (μ ν : ℕ → Measure ℝ)
   letI : IsProbabilityMeasure (μ m) := hprob_μm
   haveI : IsProbabilityMeasure (measureConv (μ m) (ν m)) := by
     unfold measureConv
-    exact Measure.isProbabilityMeasure_map (μ := (μ m).prod (ν m))
-      (by fun_prop : AEMeasurable (fun p : ℝ × ℝ => p.1 + p.2) ((μ m).prod (ν m)))
+    exact (Measure.isProbabilityMeasure_map_iff (μ := (μ m).prod (ν m))
+      (by fun_prop : AEMeasurable (fun p : ℝ × ℝ => p.1 + p.2) ((μ m).prod (ν m)))).2 inferInstance
   apply measure_unique
   intro ξ
   have hsplit_eventually :

@@ -1,6 +1,10 @@
-import LeanCode.Vendor.E5.P10.Part10.CaseGaussian
-import LeanCode.Vendor.E5.P10.Part10.Deconvolution
-import LeanCode.Vendor.E5.Defs
+module
+
+public import LeanCode.Vendor.E5.P10.Part10.CaseGaussian
+public import LeanCode.Vendor.E5.P10.Part10.Deconvolution
+public import LeanCode.Vendor.E5.Defs
+
+@[expose] public section
 
 open MeasureTheory
 open Filter

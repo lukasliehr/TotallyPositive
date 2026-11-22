@@ -1,4 +1,8 @@
-import LeanCode.Vendor.E2.Decay
+module
+
+public import LeanCode.Vendor.E2.Decay
+
+@[expose] public section
 
 open scoped ENNReal
 

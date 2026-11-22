@@ -1,8 +1,10 @@
-import LeanCode.Vendor.E1.Defs
-import LeanCode.Vendor.E1.Basic
-import LeanCode.Vendor.E1.IntegralEstimates
-import LeanCode.Vendor.E1.Reflection
-import LeanCode.Vendor.E1.GeometricDecay
-import LeanCode.Vendor.E1.GlobalBound
-import LeanCode.Vendor.E1.OneSidedDecay
-import LeanCode.Vendor.E1.MainTheorem
+module
+
+public import LeanCode.Vendor.E1.Defs
+public import LeanCode.Vendor.E1.Basic
+public import LeanCode.Vendor.E1.IntegralEstimates
+public import LeanCode.Vendor.E1.Reflection
+public import LeanCode.Vendor.E1.GeometricDecay
+public import LeanCode.Vendor.E1.GlobalBound
+public import LeanCode.Vendor.E1.OneSidedDecay
+public import LeanCode.Vendor.E1.MainTheorem

@@ -1,49 +1,18 @@
-import LeanCode.Conventions
-import LeanCode.Scaling
-import LeanCode.Construction
-import LeanCode.OperatorConventions
-import LeanCode.E7Vocab
-import LeanCode.SelfSimilarPrereqs
-import LeanCode.Hard_OpnormL1
-import LeanCode.Hard_ScalingFrame
-import LeanCode.Hard_RealComplex
-import LeanCode.Hard_FredholmBridge
-import LeanCode.Hard_SelfSimilar
+module
 
+public import LeanCode.Conventions
+public import LeanCode.Scaling
+public import LeanCode.Construction
+public import LeanCode.OperatorConventions
+public import LeanCode.E7Vocab
+public import LeanCode.SelfSimilarPrereqs
+public import LeanCode.Hard_OpnormL1
+public import LeanCode.Hard_ScalingFrame
+public import LeanCode.Hard_RealComplex
+public import LeanCode.Hard_FredholmBridge
+public import LeanCode.Hard_SelfSimilar
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@[expose] public section
 
 open MeasureTheory
 open scoped ENNReal

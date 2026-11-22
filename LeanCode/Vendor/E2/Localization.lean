@@ -1,5 +1,9 @@
-import LeanCode.Vendor.E2.Pairing
-import LeanCode.Vendor.E2.BanachFacts
+module
+
+public import LeanCode.Vendor.E2.Pairing
+public import LeanCode.Vendor.E2.BanachFacts
+
+@[expose] public section
 
 open scoped ENNReal
 

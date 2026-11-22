@@ -1,17 +1,8 @@
-import LeanCode.Vocab
+module
 
+public import LeanCode.Vocab
 
-
-
-
-
-
-
-
-
-
-
-
+@[expose] public section
 
 open Filter Topology Set
 open scoped Uniformity

@@ -1,21 +1,9 @@
-import LeanCode.Vocab
-import LeanCode.E7Vocab
+module
 
+public import LeanCode.Vocab
+public import LeanCode.E7Vocab
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@[expose] public section
 
 open Classical
 noncomputable section

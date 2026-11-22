@@ -1,5 +1,9 @@
-import LeanCode.Vendor.E3.FiberLowerBound
-import LeanCode.Vendor.E3.FiberSequences
+module
+
+public import LeanCode.Vendor.E3.FiberLowerBound
+public import LeanCode.Vendor.E3.FiberSequences
+
+@[expose] public section
 
 open MeasureTheory
 open scoped ENNReal

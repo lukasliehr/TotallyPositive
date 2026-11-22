@@ -1,28 +1,8 @@
-import LeanCode.Vocab
+module
 
+public import LeanCode.Vocab
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@[expose] public section
 
 open scoped ENNReal
 open Classical

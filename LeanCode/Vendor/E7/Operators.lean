@@ -1,12 +1,10 @@
-import Mathlib.Analysis.Normed.Lp.lpSpace
-import Mathlib.Topology.Algebra.InfiniteSum.Basic
-import Mathlib.Analysis.Normed.Operator.Basic
+module
 
+public import Mathlib.Analysis.Normed.Lp.lpSpace
+public import Mathlib.Topology.Algebra.InfiniteSum.Basic
+public import Mathlib.Analysis.Normed.Operator.Basic
 
-
-
-
-
+@[expose] public section
 
 open scoped ENNReal
 noncomputable section

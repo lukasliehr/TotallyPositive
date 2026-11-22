@@ -1,4 +1,8 @@
-import LeanCode.Vendor.E3.PreGramian
+module
+
+public import LeanCode.Vendor.E3.PreGramian
+
+@[expose] public section
 
 open scoped ENNReal
 

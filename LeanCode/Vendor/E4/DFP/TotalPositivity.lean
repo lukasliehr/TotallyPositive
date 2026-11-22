@@ -1,4 +1,8 @@
-import LeanCode.Vendor.E4.DFP.Defs
+module
+
+public import LeanCode.Vendor.E4.DFP.Defs
+
+@[expose] public section
 
 open Matrix
 open scoped BigOperators
@@ -1547,6 +1551,7 @@ private theorem exists_nonzero_minor_of_totallyPositive_of_alternating_image_fin
           A.submatrix (Fin.succAbove p) (Fin.succAbove (3 : Fin 4)) =
             B.submatrix (Fin.succAbove p) cols3 := by
         ext i j
+        simp only [Matrix.submatrix_apply]
         fin_cases j <;> simp [A, Fin.succAbove]
       rw [hA3, hsub]
       have hsign :
@@ -1807,6 +1812,7 @@ private theorem exists_nonzero_minor_of_totallyPositive_of_alternating_image_fin
           A.submatrix (Fin.succAbove p) (Fin.succAbove (3 : Fin 4)) =
             B.submatrix (Fin.succAbove p) cols3 := by
         ext i j
+        simp only [Matrix.submatrix_apply]
         fin_cases j <;> simp [A, Fin.succAbove]
       rw [hA3, hsub]
       have hsign :
@@ -2067,6 +2073,7 @@ private theorem exists_nonzero_minor_of_totallyPositive_of_alternating_image_fin
           A.submatrix (Fin.succAbove p) (Fin.succAbove (4 : Fin 5)) =
             B.submatrix (Fin.succAbove p) cols4 := by
         ext i j
+        simp only [Matrix.submatrix_apply]
         fin_cases j <;> simp [A, Fin.succAbove]
       rw [hA4, hsub]
       have hsign :
@@ -2326,6 +2333,7 @@ private theorem exists_nonzero_minor_of_totallyPositive_of_alternating_image_fin
           A.submatrix (Fin.succAbove p) (Fin.succAbove (4 : Fin 5)) =
             B.submatrix (Fin.succAbove p) cols4 := by
         ext i j
+        simp only [Matrix.submatrix_apply]
         fin_cases j <;> simp [A, Fin.succAbove]
       rw [hA4, hsub]
       have hsign :
@@ -2585,6 +2593,7 @@ private theorem exists_nonzero_minor_of_totallyPositive_of_alternating_image_fin
           A.submatrix (Fin.succAbove p) (Fin.succAbove (5 : Fin 6)) =
             B.submatrix (Fin.succAbove p) cols5 := by
         ext i j
+        simp only [Matrix.submatrix_apply]
         fin_cases j <;> simp [A, Fin.succAbove]
       rw [hA5, hsub]
       have hsign :
@@ -3055,6 +3064,7 @@ private theorem cofactor_identity_fin_six_five
         A.submatrix (Fin.succAbove p) (Fin.succAbove (5 : Fin 6)) =
           B.submatrix (Fin.succAbove p) (fun j : Fin 5 => j) := by
       ext i j
+      simp only [Matrix.submatrix_apply]
       fin_cases j <;> simp [A, Fin.succAbove]
     rw [hA5, hsub]
     have hsign :
@@ -3260,6 +3270,7 @@ private theorem cofactor_identity_fin_seven_six
         A.submatrix (Fin.succAbove p) (Fin.succAbove (6 : Fin 7)) =
           B.submatrix (Fin.succAbove p) (fun j : Fin 6 => j) := by
       ext i j
+      simp only [Matrix.submatrix_apply]
       fin_cases j <;> simp [A, Fin.succAbove]
     rw [hA6, hsub]
     have hsign :
@@ -3611,6 +3622,7 @@ private theorem exists_nonzero_minor_of_totallyPositive_of_alternating_image_fin
           A.submatrix (Fin.succAbove p) (Fin.succAbove (5 : Fin 6)) =
             B.submatrix (Fin.succAbove p) cols5 := by
         ext i j
+        simp only [Matrix.submatrix_apply]
         fin_cases j <;> simp [A, Fin.succAbove]
       rw [hA5, hsub]
       have hsign :
@@ -3904,6 +3916,7 @@ private theorem cofactor_identity_fin_eight_seven
         A.submatrix (Fin.succAbove p) (Fin.succAbove (7 : Fin 8)) =
           B.submatrix (Fin.succAbove p) (fun j : Fin 7 => j) := by
       ext i j
+      simp only [Matrix.submatrix_apply]
       fin_cases j <;> simp [A, Fin.succAbove]
     rw [hA7, hsub]
     have hsign :
@@ -4257,6 +4270,7 @@ private theorem exists_nonzero_minor_of_totallyPositive_of_alternating_image_fin
           A.submatrix (Fin.succAbove p) (Fin.succAbove (6 : Fin 7)) =
             B.submatrix (Fin.succAbove p) cols6 := by
         ext i j
+        simp only [Matrix.submatrix_apply]
         fin_cases j <;> simp [A, Fin.succAbove]
       rw [hA6, hsub]
       have hsign :
@@ -4550,6 +4564,7 @@ private theorem cofactor_identity_fin_nine_eight
         A.submatrix (Fin.succAbove p) (Fin.succAbove (8 : Fin 9)) =
           B.submatrix (Fin.succAbove p) (fun j : Fin 8 => j) := by
       ext i j
+      simp only [Matrix.submatrix_apply]
       fin_cases j <;> simp [A, Fin.succAbove]
     rw [hA8, hsub]
     have hsign :
@@ -5062,6 +5077,7 @@ private theorem cofactor_identity_fin_five_four
         A.submatrix (Fin.succAbove p) (Fin.succAbove (4 : Fin 5)) =
           B.submatrix (Fin.succAbove p) (fun j : Fin 4 => j) := by
       ext i j
+      simp only [Matrix.submatrix_apply]
       fin_cases j <;> simp [A, Fin.succAbove]
     rw [hA4, hsub]
     have hsign :
@@ -5457,6 +5473,7 @@ private theorem cofactor_relation_of_vanishing_maximal_minors :
         A.submatrix (Fin.succAbove p) (Fin.succAbove last) =
           B.submatrix (Fin.succAbove p) cols := by
       ext i j
+      simp only [Matrix.submatrix_apply]
       simp [A, last, Fin.succAbove_last]
     rw [hA_last, hsub]
     have hlast_val : (last : Nat) = r := by simp [last]

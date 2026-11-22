@@ -1,18 +1,16 @@
-import Mathlib.Analysis.Normed.Operator.Banach
-import Mathlib.Analysis.Normed.Operator.NormedSpace
-import Mathlib.Analysis.Normed.Ring.Units
-import Mathlib.Analysis.SpecificLimits.Normed
-import Mathlib.Topology.MetricSpace.HausdorffDistance
-import Mathlib.Analysis.Normed.Module.Basic
-import Mathlib.Analysis.Complex.Basic
-import Mathlib.Analysis.Normed.Group.Quotient
-import Mathlib.Topology.Algebra.Module.ContinuousLinearMap.Quotient
+module
 
+public import Mathlib.Analysis.Normed.Operator.Banach
+public import Mathlib.Analysis.Normed.Operator.NormedSpace
+public import Mathlib.Analysis.Normed.Ring.Units
+public import Mathlib.Analysis.SpecificLimits.Normed
+public import Mathlib.Topology.MetricSpace.HausdorffDistance
+public import Mathlib.Analysis.Normed.Module.Basic
+public import Mathlib.Analysis.Complex.Basic
+public import Mathlib.Analysis.Normed.Group.Quotient
+public import Mathlib.Topology.Algebra.Module.ContinuousLinearMap.Quotient
 
-
-
-
-
+@[expose] public section
 
 noncomputable section
 namespace LimitOps

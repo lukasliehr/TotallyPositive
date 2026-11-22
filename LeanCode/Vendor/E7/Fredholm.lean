@@ -1,27 +1,11 @@
-import LeanCode.Vendor.E7.Defs
-import LeanCode.Vendor.E7.SchurBound
-import LeanCode.Vendor.E7.BanachFacts
-import LeanCode.Vendor.E7.LimitOperators
+module
 
+public import LeanCode.Vendor.E7.Defs
+public import LeanCode.Vendor.E7.SchurBound
+public import LeanCode.Vendor.E7.BanachFacts
+public import LeanCode.Vendor.E7.LimitOperators
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@[expose] public section
 
 noncomputable section
 namespace LimitOps
@@ -670,8 +654,7 @@ theorem card_le_of_linearIndependent_ker_truncation {A : ℤ → ℤ → ℂ}
     intro w hw hwker
     have hres0 : resLM N M (w : ℓ1) = 0 := by
       have h2 := congrArg (Subtype.val) (LinearMap.mem_ker.mp hwker)
-      rw [LinearMap.codRestrict_apply] at h2
-      simpa using h2
+      exact h2
     have hwU : (w : ℓ1) ∈ U := Submodule.mem_map.mpr ⟨w, hw, rfl⟩
     exact Subtype.ext (hMinj (w : ℓ1) hwU hres0)
 

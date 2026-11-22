@@ -1,5 +1,9 @@
-import LeanCode.Vendor.E6.External
-import LeanCode.Vendor.E6.GaborMatrix
+module
+
+public import LeanCode.Vendor.E6.External
+public import LeanCode.Vendor.E6.GaborMatrix
+
+@[expose] public section
 
 noncomputable section
 

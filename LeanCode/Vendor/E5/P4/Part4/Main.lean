@@ -1,9 +1,14 @@
-import LeanCode.Vendor.E5.P4.Part4.Defs
-import LeanCode.Vendor.E5.P4.Part4.KernelBasic
-import LeanCode.Vendor.E5.P4.Part4.Translation
-import LeanCode.Vendor.E5.P4.Part4.Regularity
-import LeanCode.Vendor.E5.P4.Part4.Periodization
-import LeanCode.Vendor.E5.Defs
+module
+
+public import LeanCode.Vendor.E5.P4.Part4.Defs
+public import LeanCode.Vendor.E5.P4.Part4.KernelBasic
+public import LeanCode.Vendor.E5.P4.Part4.Translation
+public import LeanCode.Vendor.E5.P4.Part4.Regularity
+public import LeanCode.Vendor.E5.P4.Part4.Periodization
+public import LeanCode.Vendor.E5.Defs
+
+@[expose] public section
+
 open VendorE5
 
 open MeasureTheory

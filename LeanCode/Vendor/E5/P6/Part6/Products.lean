@@ -1,5 +1,9 @@
-import LeanCode.Vendor.E5.P6.Part6.Basic
-import LeanCode.Vendor.E5.Defs
+module
+
+public import LeanCode.Vendor.E5.P6.Part6.Basic
+public import LeanCode.Vendor.E5.Defs
+
+@[expose] public section
 
 open scoped BigOperators
 
@@ -17,10 +21,10 @@ theorem prod_bound : ∀ (p : ℕ) (u : Fin p → ℂ),
   intro p u
   refine ⟨?_, ?_⟩
   · rw [norm_prod]
-    refine Finset.prod_le_prod (fun j _ => norm_nonneg _) (fun j _ => ?_)
+    refine Finset.prod_le_prod₀ (fun j _ => norm_nonneg _) (fun j _ => ?_)
     have h := norm_add_le (1 : ℂ) (u j); rwa [norm_one] at h
   · rw [Real.exp_sum]
-    refine Finset.prod_le_prod (fun j _ => by positivity) (fun j _ => ?_)
+    refine Finset.prod_le_prod₀ (fun j _ => by positivity) (fun j _ => ?_)
     have := Real.add_one_le_exp ‖u j‖; linarith
 
 
@@ -31,7 +35,7 @@ private lemma prod_diff_aux {ι : Type*} (s : Finset ι) (u : ι → ℂ) :
   | empty => simp
   | @insert a s ha ih =>
     have hone : (1 : ℝ) ≤ ∏ j ∈ s, (1 + ‖u j‖) := by
-      have h := Finset.prod_le_prod (s := s) (f := fun _ => (1 : ℝ))
+      have h := Finset.prod_le_prod₀ (s := s) (f := fun _ => (1 : ℝ))
         (g := fun j => 1 + ‖u j‖) (fun j _ => zero_le_one)
         (fun j _ => by have := norm_nonneg (u j); linarith)
       simpa using h

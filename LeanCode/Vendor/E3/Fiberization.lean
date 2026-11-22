@@ -1,4 +1,8 @@
-import LeanCode.Vendor.E3.Defs
+module
+
+public import LeanCode.Vendor.E3.Defs
+
+@[expose] public section
 
 open MeasureTheory
 open scoped NNReal ENNReal
@@ -142,7 +146,7 @@ private lemma shifted_sq_aemeasurable (f : ℝ → ℂ)
       (volume.restrict (Set.Ioc (0 : ℝ) 1)) := by
   let μI : Measure ℝ := volume.restrict (Set.Ioc (0 : ℝ) 1)
   have hqmp :
-      Measure.QuasiMeasurePreserving (fun x : ℝ => x - (l : ℝ)) μI volume := by
+      QuasiMeasurePreserving (fun x : ℝ => x - (l : ℝ)) μI volume := by
     exact (measurePreserving_sub_right (volume : Measure ℝ) (l : ℝ)).quasiMeasurePreserving.mono_left
       (Measure.absolutelyContinuous_of_le Measure.restrict_le_self)
   have hstrong : AEStronglyMeasurable (fun x : ℝ => f (x - (l : ℝ))) μI := by

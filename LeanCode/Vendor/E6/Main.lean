@@ -1,9 +1,11 @@
-import LeanCode.Vendor.E6.Defs
-import LeanCode.Vendor.E6.External
-import LeanCode.Vendor.E6.Decay
-import LeanCode.Vendor.E6.ZakCriticalLine
-import LeanCode.Vendor.E6.PerturbationInterval
-import LeanCode.Vendor.E6.GaborMatrix
-import LeanCode.Vendor.E6.LinftySurjectivity
-import LeanCode.Vendor.E6.OperatorBridge
-import LeanCode.Vendor.E6.MainTheorem
+module
+
+public import LeanCode.Vendor.E6.Defs
+public import LeanCode.Vendor.E6.External
+public import LeanCode.Vendor.E6.Decay
+public import LeanCode.Vendor.E6.ZakCriticalLine
+public import LeanCode.Vendor.E6.PerturbationInterval
+public import LeanCode.Vendor.E6.GaborMatrix
+public import LeanCode.Vendor.E6.LinftySurjectivity
+public import LeanCode.Vendor.E6.OperatorBridge
+public import LeanCode.Vendor.E6.MainTheorem

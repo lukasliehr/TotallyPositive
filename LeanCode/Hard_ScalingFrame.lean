@@ -1,19 +1,9 @@
-import LeanCode.Vocab
-import LeanCode.Scaling
+module
 
+public import LeanCode.Vocab
+public import LeanCode.Scaling
 
-
-
-
-
-
-
-
-
-
-
-
-
+@[expose] public section
 
 open MeasureTheory
 open scoped ENNReal ComplexConjugate
@@ -35,7 +25,7 @@ theorem dilFun_eq_smul_comp (c : ℝ) (f : ℝ → ℂ) :
 
 
 theorem qmp_mul {c : ℝ} (hc : c ≠ 0) :
-    Measure.QuasiMeasurePreserving (fun t : ℝ => c * t) (volume : Measure ℝ) volume := by
+    QuasiMeasurePreserving (fun t : ℝ => c * t) (volume : Measure ℝ) volume := by
   refine ⟨measurable_const_mul c, ?_⟩
   rw [Real.map_volume_mul_left hc]
   exact Measure.smul_absolutelyContinuous
@@ -76,17 +66,14 @@ theorem eLpNorm_dilFun {c : ℝ} (hc : 0 < c) (f : ℝ → ℂ)
       = eLpNorm f 2 (Measure.map (fun x => c * x) volume) := by
     rw [eLpNorm_map_measure hae (measurable_const_mul c).aemeasurable]; rfl
   rw [hcomp, Real.map_volume_mul_left hcne,
-      eLpNorm_smul_measure_of_ne_top (by norm_num) f _, smul_eq_mul, ← mul_assoc,
+      eLpNorm_smul_measure_of_ne_top (by norm_num) f _ hf, smul_eq_mul, ← mul_assoc,
       dil_coeff_one hc, one_mul]
 
 
 theorem memLp_dilFun {c : ℝ} (hc : 0 < c) {f : ℝ → ℂ} (hf : MemLp f 2 volume) :
     MemLp (dilFun c f) 2 volume := by
-  refine ⟨?_, ?_⟩
-  · rw [dilFun_eq_smul_comp]
-    exact AEStronglyMeasurable.const_smul
-      (hf.1.comp_quasiMeasurePreserving (qmp_mul (ne_of_gt hc))) _
-  · rw [eLpNorm_dilFun hc f hf.1]; exact hf.2
+  rw [memLp_iff, eLpNorm_dilFun hc f hf.aestronglyMeasurable]
+  exact hf.eLpNorm_lt_top
 
 
 
@@ -156,7 +143,7 @@ theorem dilLp_smul {c : ℝ} (hc : 0 < c) (r : ℂ) (f : Lp ℂ 2 (volume : Meas
 
 theorem dilLp_norm {c : ℝ} (hc : 0 < c) (f : Lp ℂ 2 (volume : Measure ℝ)) :
     ‖dilLp c hc f‖ = ‖f‖ := by
-  rw [dilLp, Lp.norm_toLp, eLpNorm_dilFun hc _ (Lp.memLp f).1, ← Lp.norm_def]
+  rw [dilLp, Lp.norm_toLp, eLpNorm_dilFun hc _ (Lp.memLp f).aestronglyMeasurable, ← Lp.norm_def]
 
 
 def dilLpₗ (c : ℝ) (hc : 0 < c) : Lp ℂ 2 (volume : Measure ℝ) →ₗ[ℂ] Lp ℂ 2 (volume : Measure ℝ) where

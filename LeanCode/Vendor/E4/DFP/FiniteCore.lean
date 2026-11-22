@@ -1,5 +1,9 @@
-import LeanCode.Vendor.E4.DFP.SequenceSpaces
-import LeanCode.Vendor.E4.DFP.TotalPositivity
+module
+
+public import LeanCode.Vendor.E4.DFP.SequenceSpaces
+public import LeanCode.Vendor.E4.DFP.TotalPositivity
+
+@[expose] public section
 
 open Matrix
 open scoped BigOperators

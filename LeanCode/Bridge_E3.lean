@@ -1,25 +1,10 @@
-import LeanCode.Vendor.E3
-import LeanCode.Vocab
-import LeanCode.Base
+module
 
+public import LeanCode.Vendor.E3
+public import LeanCode.Vocab
+public import LeanCode.Base
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@[expose] public section
 
 noncomputable section
 

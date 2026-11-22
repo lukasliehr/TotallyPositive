@@ -1,4 +1,8 @@
-import LeanCode.Vendor.E1.Basic
+module
+
+public import LeanCode.Vendor.E1.Basic
+
+@[expose] public section
 
 noncomputable section
 
@@ -68,7 +72,7 @@ theorem intervalIntegral_lower {g : ℝ → ℝ}
   have hcomp_int : IntervalIntegrable (fun x : ℝ => g (p + q - x)) volume p q :=
     hcomp_global.intervalIntegrable
   have hconst_int : IntervalIntegrable (fun _ : ℝ => 2 * c) volume p q :=
-    intervalIntegral.intervalIntegrable_const
+    intervalIntegrable_const
   have hsum_int : IntervalIntegrable (fun x : ℝ => g x + g (p + q - x)) volume p q :=
     hg_int.add hcomp_int
   have hmono :

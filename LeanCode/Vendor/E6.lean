@@ -1,1 +1,3 @@
-import LeanCode.Vendor.E6.Main
+module
+
+public import LeanCode.Vendor.E6.Main

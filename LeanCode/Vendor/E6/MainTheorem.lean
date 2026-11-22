@@ -1,4 +1,8 @@
-import LeanCode.Vendor.E6.OperatorBridge
+module
+
+public import LeanCode.Vendor.E6.OperatorBridge
+
+@[expose] public section
 
 noncomputable section
 

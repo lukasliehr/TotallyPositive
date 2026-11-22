@@ -1,20 +1,9 @@
-import LeanCode.Vendor.E5.P11.Part11.Core
-import LeanCode.Vendor.E5.Defs
+module
 
+public import LeanCode.Vendor.E5.P11.Part11.Core
+public import LeanCode.Vendor.E5.Defs
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+@[expose] public section
 
 theorem Part_11_main : Statement_Part_11 := by
   intro R _hcont hpos hfe hcyc hne r s hr hs hRr hRs

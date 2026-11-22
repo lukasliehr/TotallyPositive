@@ -1,4 +1,8 @@
-import LeanCode.Vendor.E3.Defs
+module
+
+public import LeanCode.Vendor.E3.Defs
+
+@[expose] public section
 
 open MeasureTheory
 open scoped ENNReal
@@ -449,8 +453,7 @@ theorem lattice_decay_tail_uniform
       (∑' n : ℤ, majorTail n) =
         ∑' k : ℤ, if k ∉ s then ψ k else 0 := by
     dsimp [majorTail]
-    simpa using
-      (Equiv.addLeft q).tsum_eq (fun k : ℤ => if k ∉ s then ψ k else 0)
+    exact (Equiv.addLeft q).tsum_eq (fun k : ℤ => if k ∉ s then ψ k else 0)
   have hmajor_subtype :
       (∑' k : ℤ, if k ∉ s then ψ k else 0) =
         ∑' b : {k : ℤ // k ∉ s}, ψ b := by

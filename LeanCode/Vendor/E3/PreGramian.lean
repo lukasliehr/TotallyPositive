@@ -1,4 +1,8 @@
-import LeanCode.Vendor.E3.Schur
+module
+
+public import LeanCode.Vendor.E3.Schur
+
+@[expose] public section
 
 open scoped ENNReal
 

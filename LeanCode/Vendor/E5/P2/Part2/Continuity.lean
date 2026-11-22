@@ -1,5 +1,9 @@
-import LeanCode.Vendor.E5.P2.Part2.Summability
-import LeanCode.Vendor.E5.Defs
+module
+
+public import LeanCode.Vendor.E5.P2.Part2.Summability
+public import LeanCode.Vendor.E5.Defs
+
+@[expose] public section
 
 open MeasureTheory
 

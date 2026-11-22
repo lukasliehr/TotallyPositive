@@ -1,5 +1,9 @@
-import Mathlib
-import LeanCode.Vendor.E5.Defs
+module
+
+public import Mathlib
+public import LeanCode.Vendor.E5.Defs
+
+@[expose] public section
 
 open Filter Topology
 
@@ -24,6 +28,6 @@ theorem prod_norm {ι : Type*} (f : ι → ℂ) (L : ℂ) (hL : HasProd f L) :
 
 theorem prod_ge_one {ι : Type*} (h : ι → ℝ) (M : ℝ)
     (hh : ∀ i, 1 ≤ h i) (hM : HasProd h M) : 1 ≤ M :=
-  ge_of_tendsto' hM (fun _ => Finset.one_le_prod (fun i _ => hh i))
+  ge_of_tendsto' hM (fun _ => Finset.one_le_prod₀ (fun i _ => hh i))
 
 end Part7

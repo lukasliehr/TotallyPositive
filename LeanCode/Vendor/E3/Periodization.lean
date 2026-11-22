@@ -1,4 +1,8 @@
-import LeanCode.Vendor.E3.Fiberization
+module
+
+public import LeanCode.Vendor.E3.Fiberization
+
+@[expose] public section
 
 open MeasureTheory
 open scoped ENNReal Interval
@@ -37,7 +41,7 @@ theorem periodization_integrable
       AEStronglyMeasurable (fun x : ℝ => H (x - (l : ℝ))) μI := by
     intro l
     have hqmp :
-        Measure.QuasiMeasurePreserving (fun x : ℝ => x - (l : ℝ)) μI volume := by
+        QuasiMeasurePreserving (fun x : ℝ => x - (l : ℝ)) μI volume := by
       exact (measurePreserving_sub_right (volume : Measure ℝ) (l : ℝ)).quasiMeasurePreserving.mono_left
         (Measure.absolutelyContinuous_of_le Measure.restrict_le_self)
     simpa [Function.comp_def] using
@@ -88,7 +92,7 @@ theorem periodization_ae_summable
       AEMeasurable (fun x : ℝ => ‖H (x - (l : ℝ))‖ₑ) μI := by
     intro l
     have hqmp :
-        Measure.QuasiMeasurePreserving (fun x : ℝ => x - (l : ℝ)) μI volume := by
+        QuasiMeasurePreserving (fun x : ℝ => x - (l : ℝ)) μI volume := by
       exact (measurePreserving_sub_right (volume : Measure ℝ) (l : ℝ)).quasiMeasurePreserving.mono_left
         (Measure.absolutelyContinuous_of_le Measure.restrict_le_self)
     simpa [Function.comp_def] using
@@ -147,7 +151,7 @@ private theorem integral_eq_integral_periodization
       AEStronglyMeasurable (fun x : ℝ => F (x - (l : ℝ))) μI := by
     intro l
     have hqmp :
-        Measure.QuasiMeasurePreserving (fun x : ℝ => x - (l : ℝ)) μI volume := by
+        QuasiMeasurePreserving (fun x : ℝ => x - (l : ℝ)) μI volume := by
       exact (measurePreserving_sub_right (volume : Measure ℝ) (l : ℝ)).quasiMeasurePreserving.mono_left
         (Measure.absolutelyContinuous_of_le Measure.restrict_le_self)
     simpa [Function.comp_def] using

@@ -1,4 +1,8 @@
-import LeanCode.Vendor.E6.PerturbationInterval
+module
+
+public import LeanCode.Vendor.E6.PerturbationInterval
+
+@[expose] public section
 
 noncomputable section
 

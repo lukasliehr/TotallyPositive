@@ -1,9 +1,10 @@
+module
 
-import LeanCode.Vendor.E5.P4.Part4.Defs
-import LeanCode.Vendor.E5.P4.Part4.KernelBasic
-import LeanCode.Vendor.E5.P4.Part4.Translation
-import LeanCode.Vendor.E5.P4.Part4.Regularity
-import LeanCode.Vendor.E5.P4.Part4.Periodization
-import LeanCode.Vendor.E5.P4.Part4.Main
-import LeanCode.Vendor.E5.P4.MainTheorem
-import LeanCode.Vendor.E5.Defs
+public import LeanCode.Vendor.E5.P4.Part4.Defs
+public import LeanCode.Vendor.E5.P4.Part4.KernelBasic
+public import LeanCode.Vendor.E5.P4.Part4.Translation
+public import LeanCode.Vendor.E5.P4.Part4.Regularity
+public import LeanCode.Vendor.E5.P4.Part4.Periodization
+public import LeanCode.Vendor.E5.P4.Part4.Main
+public import LeanCode.Vendor.E5.P4.MainTheorem
+public import LeanCode.Vendor.E5.Defs

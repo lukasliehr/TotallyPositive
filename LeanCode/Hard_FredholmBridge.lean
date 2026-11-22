@@ -1,14 +1,12 @@
-import LeanCode.E7Vocab
-import LeanCode.Bridge_E7
-import LeanCode.OperatorConventions
-import LeanCode.ExternalInputs
-import LeanCode.Hard_OpnormL1
+module
 
+public import LeanCode.E7Vocab
+public import LeanCode.Bridge_E7
+public import LeanCode.OperatorConventions
+public import LeanCode.ExternalInputs
+public import LeanCode.Hard_OpnormL1
 
-
-
-
-
+@[expose] public section
 
 open scoped ENNReal
 open Classical

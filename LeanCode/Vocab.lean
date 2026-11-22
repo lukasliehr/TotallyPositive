@@ -1,31 +1,8 @@
-import LeanCode.Base
+module
 
+public import LeanCode.Base
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@[expose] public section
 
 open Matrix
 open MeasureTheory

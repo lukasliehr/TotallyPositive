@@ -1,6 +1,10 @@
-import LeanCode.Vendor.E5.P4.Part4.Defs
-import LeanCode.Vendor.E5.P4.Part4.KernelBasic
-import LeanCode.Vendor.E5.Defs
+module
+
+public import LeanCode.Vendor.E5.P4.Part4.Defs
+public import LeanCode.Vendor.E5.P4.Part4.KernelBasic
+public import LeanCode.Vendor.E5.Defs
+
+@[expose] public section
 
 open MeasureTheory
 
@@ -270,7 +274,7 @@ theorem conv_kernel (a : ℝ) (ha : a ≠ 0) (M : ℝ) (hM : 0 ≤ M) (h : ℝ �
       have := (hmpRefl y).integrable_comp
         ((kernel_meas a).mul (hcomp y)).aestronglyMeasurable |>.mpr hbase
       refine this.congr (ae_of_all _ (fun u => ?_))
-      simp only [Function.comp, sub_sub_cancel]
+      simp only [Function.comp, Pi.mul_apply, sub_sub_cancel]
     have hcv : ∀ y : ℝ, conv (expKernel a) h y = ∫ u : ℝ, expKernel a (y - u) * h u := by
       intro y
       have key := hCV (fun t => expKernel a t * h (y - t)) y

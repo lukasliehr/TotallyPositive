@@ -1,4 +1,8 @@
-import LeanCode.Vendor.E4.DFP.SequenceSpaces
+module
+
+public import LeanCode.Vendor.E4.DFP.SequenceSpaces
+
+@[expose] public section
 
 open scoped BigOperators
 

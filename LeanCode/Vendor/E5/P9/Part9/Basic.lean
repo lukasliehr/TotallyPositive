@@ -1,5 +1,9 @@
-import LeanCode.Vendor.E5.P9.Part9.Defs
-import LeanCode.Vendor.E5.Defs
+module
+
+public import LeanCode.Vendor.E5.P9.Part9.Defs
+public import LeanCode.Vendor.E5.Defs
+
+@[expose] public section
 
 open scoped BigOperators
 

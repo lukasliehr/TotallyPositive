@@ -1,25 +1,11 @@
-import LeanCode.Base
-import LeanCode.Vocab
-import LeanCode.ExternalInputs
-import LeanCode.Decay
+module
 
+public import LeanCode.Base
+public import LeanCode.Vocab
+public import LeanCode.ExternalInputs
+public import LeanCode.Decay
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@[expose] public section
 
 open Matrix
 open MeasureTheory

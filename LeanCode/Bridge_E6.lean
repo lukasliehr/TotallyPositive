@@ -1,39 +1,11 @@
-import LeanCode.Vendor.E6
-import LeanCode.Vocab
-import LeanCode.Base
-import LeanCode.Bridge_E5
+module
 
+public import LeanCode.Vendor.E6
+public import LeanCode.Vocab
+public import LeanCode.Base
+public import LeanCode.Bridge_E5
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@[expose] public section
 
 noncomputable section
 

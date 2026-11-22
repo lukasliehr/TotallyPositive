@@ -1,6 +1,10 @@
-import LeanCode.Vendor.E1.IntegralEstimates
-import LeanCode.Vendor.E1.Reflection
-import LeanCode.Vendor.E1.GeometricDecay
+module
+
+public import LeanCode.Vendor.E1.IntegralEstimates
+public import LeanCode.Vendor.E1.Reflection
+public import LeanCode.Vendor.E1.GeometricDecay
+
+@[expose] public section
 
 noncomputable section
 

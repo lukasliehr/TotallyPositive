@@ -1,2 +1,4 @@
-import LeanCode.Vendor.E5.P10.Part10.Main
-import LeanCode.Vendor.E5.Defs
+module
+
+public import LeanCode.Vendor.E5.P10.Part10.Main
+public import LeanCode.Vendor.E5.Defs

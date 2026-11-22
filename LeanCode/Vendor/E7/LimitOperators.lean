@@ -1,13 +1,11 @@
-import LeanCode.Vendor.E7.Defs
-import LeanCode.Vendor.E7.BanachFacts
-import Mathlib.Topology.UniformSpace.Dini
+module
 
+public import LeanCode.Vendor.E7.Defs
+public import LeanCode.Vendor.E7.BanachFacts
+public import Mathlib.Topology.UniformSpace.Dini
+public import Mathlib.Analysis.Normed.Module.FiniteDimension
 
-
-
-
-
-
+@[expose] public section
 
 open scoped ENNReal
 open Filter Topology

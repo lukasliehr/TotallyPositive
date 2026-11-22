@@ -1,5 +1,9 @@
-import LeanCode.Vendor.E6.External
-import LeanCode.Vendor.E6.ZakCriticalLine
+module
+
+public import LeanCode.Vendor.E6.External
+public import LeanCode.Vendor.E6.ZakCriticalLine
+
+@[expose] public section
 
 noncomputable section
 

@@ -1,5 +1,9 @@
-import LeanCode.Vendor.E5.P10.Part10.Basic
-import LeanCode.Vendor.E5.Defs
+module
+
+public import LeanCode.Vendor.E5.P10.Part10.Basic
+public import LeanCode.Vendor.E5.Defs
+
+@[expose] public section
 
 open MeasureTheory
 
@@ -158,10 +162,10 @@ theorem parity_split {E : Type*} [NormedAddCommGroup E] [CompleteSpace E]
   have hsplit := ha.tsum_subtype_add_tsum_subtype_compl s
   have hEvenTsumAux := eEven.tsum_eq (fun x : s => a x)
   have hEvenTsum : (∑' m : ℤ, a (2 * m)) = ∑' x : s, a x := by
-    simpa [eEven] using hEvenTsumAux
+    exact hEvenTsumAux
   have hOddTsumAux := eOdd.tsum_eq (fun x : ↥(sᶜ) => a x)
   have hOddTsum : (∑' m : ℤ, a (2 * m + 1)) = ∑' x : ↥(sᶜ), a x := by
-    simpa [eOdd] using hOddTsumAux
+    exact hOddTsumAux
   rw [hEvenTsum, hOddTsum]
   exact hsplit.symm
 

@@ -1,6 +1,10 @@
-import LeanCode.Vendor.E3.FiberLowerBound
-import LeanCode.Vendor.E3.Fiberization
-import LeanCode.Vendor.E3.Periodization
+module
+
+public import LeanCode.Vendor.E3.FiberLowerBound
+public import LeanCode.Vendor.E3.Fiberization
+public import LeanCode.Vendor.E3.Periodization
+
+@[expose] public section
 
 open MeasureTheory
 open scoped ENNReal
@@ -439,9 +443,8 @@ theorem fiberSequence_memLp
   have hseq_sq_lt :
       (∫⁻ x : ℝ, ENNReal.ofReal (‖fiberSequence f g α n x‖ ^ 2) ∂μI) < ∞ :=
     lt_of_le_of_lt (lintegral_mono_ae hseq_le_ae) hmajor_lt
-  refine ⟨hseq_int.aestronglyMeasurable, ?_⟩
-  rw [eLpNorm_lt_top_iff_lintegral_rpow_enorm_lt_top
-    (p := (2 : ℝ≥0∞)) two_ne_zero ENNReal.ofNat_ne_top]
+  rw [memLp_iff, eLpNorm_lt_top_iff_lintegral_rpow_enorm_lt_top
+    (p := (2 : ℝ≥0∞)) two_ne_zero ENNReal.ofNat_ne_top hseq_int.aestronglyMeasurable]
   simpa [ofReal_norm] using hseq_sq_lt
 
 

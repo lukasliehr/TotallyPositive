@@ -1,7 +1,9 @@
-import LeanCode.Vendor.E7.Operators
-import LeanCode.Vendor.E7.Decay
-import LeanCode.Vendor.E7.BanachFacts
-import LeanCode.Vendor.E7.SchurBound
-import LeanCode.Vendor.E7.Defs
-import LeanCode.Vendor.E7.Fredholm
-import LeanCode.Vendor.E7.LimitOperators
+module
+
+public import LeanCode.Vendor.E7.Operators
+public import LeanCode.Vendor.E7.Decay
+public import LeanCode.Vendor.E7.BanachFacts
+public import LeanCode.Vendor.E7.SchurBound
+public import LeanCode.Vendor.E7.Defs
+public import LeanCode.Vendor.E7.Fredholm
+public import LeanCode.Vendor.E7.LimitOperators
