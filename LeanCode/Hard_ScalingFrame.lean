@@ -293,4 +293,38 @@ theorem scaling_frame_transfer_proof
   rw [hsum_eq, ← hnorm]
   exact hbound y
 
+open Assembly in
+
+
+
+theorem scaling_summable_transfer_proof
+    (g : ℝ → ℝ) (α β : ℝ) (hβ : 0 < β)
+    (hg : Continuous g) (hpd : Assembly.HasPolynomialDecay g)
+    (hsum : ∀ y : Lp ℂ 2 (volume : Measure ℝ),
+      Summable (fun p : ℤ × ℤ =>
+        ‖inner ℂ y (Assembly.GaborAtom_L2 (Assembly.Scaling.scaleWindow β g)
+          (Assembly.Scaling.continuous_scaleWindow hg)
+          (Assembly.Scaling.hasPolynomialDecay_scaleWindow hβ hpd) (α * β) 1 p.1 p.2)‖ ^ 2))
+    (x : Lp ℂ 2 (volume : Measure ℝ)) :
+    Summable (fun p : ℤ × ℤ =>
+      ‖inner ℂ x (Assembly.GaborAtom_L2 g hg hpd α β p.1 p.2)‖ ^ 2) := by
+  set U := dilation β hβ with hU
+
+  set y : Lp ℂ 2 (volume : Measure ℝ) := U.symm x with hy
+
+  have hinner : ∀ m n : ℤ,
+      inner ℂ x (Assembly.GaborAtom_L2 g hg hpd α β m n)
+        = inner ℂ y (Assembly.GaborAtom_L2 (Assembly.Scaling.scaleWindow β g)
+            (Assembly.Scaling.continuous_scaleWindow hg)
+            (Assembly.Scaling.hasPolynomialDecay_scaleWindow hβ hpd) (α * β) 1 m n) := by
+    intro m n
+
+    rw [← dilation_gaborAtom_L2 hβ hg hpd m n, ← hU]
+    conv_lhs => rw [show x = U y by rw [hy, LinearIsometryEquiv.apply_symm_apply]]
+    rw [U.inner_map_map]
+
+  refine (hsum y).congr ?_
+  intro p
+  exact congrArg (fun z : ℂ => ‖z‖ ^ 2) (hinner p.1 p.2).symm
+
 end Assembly.Hard_ScalingFrame

@@ -52,6 +52,15 @@ def IsGaborFrame
         ‖⟪f, GaborAtom g hyp α β m n⟫_ℂ‖ ^ 2
     A * ‖f‖ ^ 2 ≤ E ∧ E ≤ B * ‖f‖ ^ 2
 
+/-- The frame coefficients of every f ∈ L²(ℝ) are square-summable. Hence the iterated sum in IsGaborFrame is the sum of a summable family. -/
+theorem gaborCoefficients_summable
+    {α β : ℝ} (hyp1 : 0 < α) (hyp2 : 0 < β) (hyp3 : α * β < 1)
+    (g : ℝ → ℝ) (hyp4 : IsTPIntegrableContinuous g)
+    (f : Lp ℂ 2 volume) :
+    Summable fun p : ℤ × ℤ =>
+      ‖⟪f, GaborAtom g hyp4 α β p.1 p.2⟫_ℂ‖ ^ 2 := by
+  sorry
+
 /-- Main result -/
 theorem TPFrameSet
     {α β : ℝ} (hyp1 : 0 < α) (hyp2 : 0 < β) (hyp3 : α * β < 1)

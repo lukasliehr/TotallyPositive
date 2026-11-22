@@ -104,6 +104,23 @@ theorem SubmatrixCriterion
   · rw [hsum, ← hnorm]
     exact hest.2
 
+
+theorem SubmatrixCriterion_summable
+    {α : ℝ} (hα : 0 < α)
+    (g : ℝ → ℝ) (hg : Continuous g) (h2 : HasPolynomialDecay g)
+    (h3 : SubmatrixCondition g α)
+    (x : Lp ℂ 2 (volume : Measure ℝ)) :
+    Summable (fun p : ℤ × ℤ =>
+      ‖inner ℂ x (GaborAtom_L2 g hg h2 α 1 p.1 p.2)‖ ^ 2) := by
+  have h2' := h2
+  rcases h2' with ⟨C, σ, hC, hσ, hbound⟩
+  have hdec : HasDecayWithConstants g C σ := ⟨hC, hσ, hbound⟩
+  have hf : MemLp (fun t : ℝ => x t) 2 (volume : Measure ℝ) := Lp.memLp x
+  refine (gabor_coefficient_summable (fun t : ℝ => x t) g α C σ hf hg hα hdec h3).congr ?_
+  intro p
+  exact congrArg (fun r : ℝ => r ^ 2)
+    (norm_inner_GaborAtom_L2_eq_gaborCoefficient g hg h2 x p.1 p.2).symm
+
 end
 
 end VendorE3

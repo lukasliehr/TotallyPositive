@@ -552,6 +552,9 @@ private theorem fiberSequence_integral_tsum_eq_tsum_integral
     (hg : Continuous g) (hα : 0 < α)
     (hdec : HasDecayWithConstants g C σ)
     (hsub : SubmatrixCondition g α) :
+    Summable (fun n : ℤ =>
+        ∫ x : ℝ, ‖fiberSequence f g α n x‖ ^ 2
+          ∂(volume.restrict (Set.Ioc (0 : ℝ) 1))) ∧
     (∫ x : ℝ, (∑' n : ℤ, ‖fiberSequence f g α n x‖ ^ 2)
         ∂(volume.restrict (Set.Ioc (0 : ℝ) 1))) =
       ∑' n : ℤ,
@@ -656,6 +659,24 @@ private theorem fiberSequence_integral_tsum_eq_tsum_integral
       (∑' n : ℤ, ∫⁻ x : ℝ,
           ‖(‖fiberSequence f g α n x‖ ^ 2 : ℝ)‖ₑ ∂μI) ≠ ∞ := by
     simpa [ofReal_norm] using hlin_ne_top_ofReal
+  have hpoint_toReal : ∀ n : ℤ,
+      (∫ x : ℝ, ‖fiberSequence f g α n x‖ ^ 2 ∂μI) =
+        (∫⁻ x : ℝ, ENNReal.ofReal (‖fiberSequence f g α n x‖ ^ 2) ∂μI).toReal := by
+    intro n
+    have hmem := fiberSequence_memLp f g α C σ hf hg hα hdec hsub n
+    have hsq_int : Integrable (fun x : ℝ => ‖fiberSequence f g α n x‖ ^ 2) μI := by
+      exact (memLp_two_iff_integrable_sq_norm hmem.aestronglyMeasurable).mp hmem
+    have hofReal :
+        ENNReal.ofReal (∫ x : ℝ, ‖fiberSequence f g α n x‖ ^ 2 ∂μI) =
+          ∫⁻ x : ℝ, ENNReal.ofReal (‖fiberSequence f g α n x‖ ^ 2) ∂μI :=
+      MeasureTheory.ofReal_integral_eq_lintegral_ofReal hsq_int
+        (Filter.Eventually.of_forall (fun x => sq_nonneg _))
+    rw [← hofReal]
+    exact (ENNReal.toReal_ofReal (integral_nonneg (fun x => sq_nonneg _))).symm
+  have hsummable : Summable (fun n : ℤ =>
+      ∫ x : ℝ, ‖fiberSequence f g α n x‖ ^ 2 ∂μI) :=
+    (ENNReal.summable_toReal hlin_ne_top_ofReal).congr (fun n => (hpoint_toReal n).symm)
+  refine ⟨hsummable, ?_⟩
   have hbochner := integral_tsum
     (μ := μI)
     (f := fun n : ℤ => fun x : ℝ => ‖fiberSequence f g α n x‖ ^ 2)
@@ -687,7 +708,7 @@ private theorem gabor_coefficient_sum_eq_fiber_integral
     _ = ∫ x : ℝ, (∑' n : ℤ, ‖fiberSequence f g α n x‖ ^ 2)
         ∂(volume.restrict (Set.Ioc (0 : ℝ) 1)) := by
           exact (fiberSequence_integral_tsum_eq_tsum_integral
-            f g α C σ hf hg hα hdec hsub).symm
+            f g α C σ hf hg hα hdec hsub).2.symm
 
 private theorem fiberSequence_two_sided_estimates_uniform
     (g : ℝ → ℝ) (α C σ : ℝ)
@@ -912,6 +933,21 @@ theorem gabor_coefficient_two_sided_estimates_uniform
     exact hest.1
   · rw [hcoeff]
     exact hest.2
+
+theorem gabor_coefficient_summable
+    (f : ℝ → ℂ) (g : ℝ → ℝ) (α C σ : ℝ)
+    (hf : MemLp f 2 (volume : Measure ℝ))
+    (hg : Continuous g) (hα : 0 < α)
+    (hdec : HasDecayWithConstants g C σ)
+    (hsub : SubmatrixCondition g α) :
+    Summable (fun p : ℤ × ℤ => ‖gaborCoefficient f g α p.2 p.1‖ ^ 2) := by
+  refine (summable_prod_of_nonneg (fun p => sq_nonneg _)).mpr ⟨?_, ?_⟩
+  · intro n
+    exact (gabor_coefficients_parseval_per_fiber f g α C σ hf hg hα hdec hsub n).1
+  · refine (fiberSequence_integral_tsum_eq_tsum_integral
+      f g α C σ hf hg hα hdec hsub).1.congr ?_
+    intro n
+    exact (gabor_coefficients_parseval_per_fiber f g α C σ hf hg hα hdec hsub n).2.symm
 
 end
 

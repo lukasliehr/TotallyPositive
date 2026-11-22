@@ -233,4 +233,78 @@ theorem frameSetConjecture_proof
 
   exact this
 
+
+
+
+
+theorem main_equiv_summable
+    (g : ℝ → ℝ) (htpic : Assembly.IsTotallyPositiveIntegrableContinuous g)
+    (hg0 : g ≠ 0) {α : ℝ} (hα : 0 < α) (hα1 : α < 1)
+    (x : Lp ℂ 2 (volume : Measure ℝ)) :
+    Summable (fun p : ℤ × ℤ =>
+      ‖inner ℂ x (Assembly.GaborAtom_L2 g htpic.2.2
+        (Assembly.TotallyPositiveHasDecay g htpic) α 1 p.1 p.2)‖ ^ 2) := by
+  have hsub : Assembly.SubmatrixCondition g α :=
+    prop_submatcond g α hα hα1 htpic hg0
+  exact Assembly.Ext.E3_SubmatrixCriterion_summable hα g htpic.2.2
+    (Assembly.TotallyPositiveHasDecay g htpic) hsub x
+
+
+
+
+
+theorem frameSetConjecture_summable_proof
+    {α β : ℝ} (hα : 0 < α) (hβ : 0 < β) (h1 : α * β < 1)
+    (g : ℝ → ℝ)
+    (htpic : Assembly.IsTotallyPositiveIntegrableContinuous g)
+    (hg0 : g ≠ 0)
+    (x : Lp ℂ 2 (volume : Measure ℝ)) :
+    Summable (fun p : ℤ × ℤ =>
+      ‖inner ℂ x (Assembly.GaborAtom_L2 g htpic.2.2
+        (Assembly.TotallyPositiveHasDecay g htpic) α β p.1 p.2)‖ ^ 2) := by
+
+  have hα' : 0 < α * β := mul_pos hα hβ
+
+  set gβ : ℝ → ℝ := Assembly.Scaling.scaleWindow β g with hgβ_def
+
+  obtain ⟨hTP, hInt, hCont⟩ := htpic
+  have hTPβ : Assembly.IsTotallyPositive gβ :=
+    Assembly.Scaling.isTotallyPositive_scaleWindow hβ hTP
+  have hContβ : Continuous gβ := Assembly.Scaling.continuous_scaleWindow hCont
+
+  have hIntβ : MeasureTheory.Integrable gβ := by
+
+    have hdiv : MeasureTheory.Integrable (fun t : ℝ => g (t / β)) :=
+      hInt.comp_div (ne_of_gt hβ)
+    have hconst : MeasureTheory.Integrable (fun t : ℝ => (Real.sqrt β)⁻¹ * g (t / β)) :=
+      hdiv.const_mul _
+    rw [hgβ_def]
+    exact hconst
+  have htpicβ : Assembly.IsTotallyPositiveIntegrableContinuous gβ := ⟨hTPβ, hIntβ, hContβ⟩
+
+  have hg0β : gβ ≠ 0 := by
+    intro hzero
+    apply hg0
+    funext t
+    have hround := Assembly.Scaling.scaleWindow_scaleWindow_inv hβ g t
+    rw [hgβ_def] at hzero
+
+    have : Assembly.Scaling.scaleWindow (1 / β) (Assembly.Scaling.scaleWindow β g) t
+        = Assembly.Scaling.scaleWindow (1 / β) 0 t := by rw [hzero]
+    rw [hround] at this
+    rw [this]
+    simp [Assembly.Scaling.scaleWindow]
+
+  have hpd : Assembly.HasPolynomialDecay g :=
+    Assembly.TotallyPositiveHasDecay g ⟨hTP, hInt, hCont⟩
+
+  have hsumβ : ∀ y : Lp ℂ 2 (volume : Measure ℝ),
+      Summable (fun p : ℤ × ℤ =>
+        ‖inner ℂ y (Assembly.GaborAtom_L2 gβ
+          (Assembly.Scaling.continuous_scaleWindow hCont)
+          (Assembly.Scaling.hasPolynomialDecay_scaleWindow hβ hpd) (α * β) 1 p.1 p.2)‖ ^ 2) :=
+    fun y => main_equiv_summable gβ htpicβ hg0β hα' h1 y
+
+  exact Assembly.Hard_ScalingFrame.scaling_summable_transfer_proof g α β hβ hCont hpd hsumβ x
+
 end Assembly.Endgame

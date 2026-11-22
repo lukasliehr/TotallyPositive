@@ -30,8 +30,10 @@ The repository follows the submission layout of the [Palomar registry](https://p
 
 - [Showcase.lean](Showcase.lean) is the Challenge module. It contains the statements and imports only Mathlib.
 - [Showcase_WithProofs.lean](Showcase_WithProofs.lean) is the Solution module.
-- [comparator.json](comparator.json) lists the compared declarations `gaborAtom_memL2` and `TPFrameSet` together with the permitted axioms.
+- [comparator.json](comparator.json) lists the compared declarations `gaborAtom_memL2`, `gaborCoefficients_summable` and `TPFrameSet` together with the permitted axioms.
 - [formalization.yaml](formalization.yaml) records the source, the scope and the production of the formalization.
+
+The main result is the theorem `TPFrameSet`. The frame sum in `IsGaborFrame` is an iterated Mathlib `tsum`, which equals zero for a family that is not summable. The theorem `gaborCoefficients_summable` therefore states that for every $f \in L^2(\mathbb R)$ the squared frame coefficients form a summable family indexed by $\mathbb Z \times \mathbb Z$. Hence, the iterated sum in `IsGaborFrame` is the usual sum over $\mathbb Z \times \mathbb Z$.
 
 All Lean files use the Lean module system. The project is built with Lean `v4.35.0` and the matching Mathlib release.
 

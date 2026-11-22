@@ -54,8 +54,11 @@ status:
     frame property in Theorem 1.1 of the source. The compared lemma
     gaborAtom_memL2 states that every Gabor atom of a continuous, integrable
     and totally positive function belongs to L²(ℝ), which is needed to define
-    the atoms as elements of L²(ℝ). The converse implication of Theorem 1.1
-    and the Kadets-type result in Theorem 1.2 of the source are not among the
+    the atoms as elements of L²(ℝ). The compared theorem
+    gaborCoefficients_summable states under the hypotheses of TPFrameSet that
+    for every f ∈ L²(ℝ) the family of squared frame coefficients indexed by
+    ℤ × ℤ is summable. The converse implication of Theorem 1.1 and the
+    Kadets-type result in Theorem 1.2 of the source are not among the
     compared declarations.
   sorry_count: 0
   sorry_in_definitions: 0
@@ -74,8 +77,10 @@ automation:
       tool_setup: >-
         Update of the project from Lean v4.31.0 to Lean v4.35.0, port of all
         source files to the Lean module system and repair of the proofs in 23
-        files which the update broke. The statements in Showcase.lean were
-        not changed.
+        files which the update broke. Statement and proof of the theorem
+        gaborCoefficients_summable, which makes the summability that the
+        proof of TPFrameSet establishes internally available as a compared
+        theorem. The other statements in Showcase.lean were not changed.
   notes: >-
     The mathematical proof is due to the authors of the paper. The paper
     states that all mathematical arguments, formalizations and technical
@@ -88,18 +93,27 @@ fidelity:
     y_1 < ... < y_n. The Lean definition IsTP requires g ≠ 0 instead of g
     being not constant. For integrable g the two conditions agree, since the
     only integrable constant function is zero. The sum in IsGaborFrame is an
-    iterated Mathlib tsum, which equals 0 for a family that is not summable.
-    Hence, the Lean statement does not assert the summability of the frame
-    coefficients as a separate claim. Only one implication of Theorem 1.1 is
-    formalized (see status.scope). No other divergence is known.
+    iterated Mathlib tsum, which equals 0 for a family that is not summable,
+    and the definition IsGaborFrame does not contain a summability
+    condition. The summability is the content of the compared theorem
+    gaborCoefficients_summable. It proves under the hypotheses of TPFrameSet
+    that for every f ∈ L²(ℝ) the family ‖⟪f, GaborAtom g hyp α β m n⟫‖²
+    indexed by (m, n) ∈ ℤ × ℤ is summable. Consequently, every inner sum and
+    the outer sum in IsGaborFrame are sums of summable families, and the
+    iterated sum equals the sum over ℤ × ℤ in the frame inequality of the
+    source. Only one implication of Theorem 1.1 is formalized (see
+    status.scope). No other divergence is known.
 
 review:
   status: "author-verified"
   notes: >-
-    The authors of the paper compared the statement file Showcase.lean with
-    Theorem 1.1 of the paper and confirmed that the Lean statement matches
-    the theorem. Section 6 of the paper explains every definition in that
-    file.
+    The authors of the paper compared the definitions and the theorem
+    TPFrameSet in the statement file Showcase.lean with Theorem 1.1 of the
+    paper and confirmed that the Lean statement matches the theorem. Section
+    6 of the paper explains every definition in that file. The theorem
+    gaborCoefficients_summable was added after version 1 of the paper and is
+    not displayed in Section 6. Lukas Liehr checked that it states the
+    summability of the frame coefficients of every f ∈ L²(ℝ).
 
 alignment:
   statements:
@@ -111,6 +125,15 @@ alignment:
         The hypothesis IsTPIntegrableContinuous g combines total positivity,
         integrability and continuity of g. The conclusion IsGaborFrame is the
         two-sided frame inequality with bounds 0 < A ≤ B.
+    - source: "Section 1.1, finiteness of the sum over ℤ × ℤ in the frame inequality"
+      lean: "gaborCoefficients_summable"
+      module: "Showcase"
+      status: "proved"
+      note: >-
+        The source defines a Gabor frame by a two-sided inequality for the
+        sum of the squared frame coefficients over ℤ × ℤ. The theorem states
+        that this family is summable for every f ∈ L²(ℝ), so that the
+        iterated sum in IsGaborFrame is the sum in the source.
     - source: "Section 6.3, square-integrability of the Gabor atoms"
       lean: "gaborAtom_memL2"
       module: "Showcase"

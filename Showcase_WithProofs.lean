@@ -61,6 +61,37 @@ def IsGaborFrame
     A * ‖f‖ ^ 2 ≤ E ∧ E ≤ B * ‖f‖ ^ 2
 
 
+theorem gaborCoefficients_summable
+    {α β : ℝ} (hyp1 : 0 < α) (hyp2 : 0 < β) (hyp3 : α * β < 1)
+    (g : ℝ → ℝ) (hyp4 : IsTPIntegrableContinuous g)
+    (f : Lp ℂ 2 volume) :
+    Summable fun p : ℤ × ℤ =>
+      ‖⟪f, GaborAtom g hyp4 α β p.1 p.2⟫_ℂ‖ ^ 2 := by
+  have hTP : Assembly.IsTotallyPositive g := by
+    intro k a b ha hb
+    exact hyp4.1.2 k a b ha hb
+  have hAssembly : Assembly.IsTotallyPositiveIntegrableContinuous g :=
+    ⟨hTP, hyp4.2.1, hyp4.2.2⟩
+  have hAtom (m n : ℤ) :
+      GaborAtom g hyp4 α β m n =
+        Assembly.GaborAtom_L2 g hAssembly.2.2
+          (Assembly.TotallyPositiveHasDecay g hAssembly) α β m n := by
+    apply Lp.ext_iff.mpr
+    calc
+      (GaborAtom g hyp4 α β m n : ℝ → ℂ)
+          =ᵐ[(volume : Measure ℝ)] GaborAtom_Function g α β m n :=
+        MemLp.coeFn_toLp _
+      _ = Assembly.GaborAtom g α β m n := by
+        rfl
+      _ =ᵐ[(volume : Measure ℝ)]
+          (Assembly.GaborAtom_L2 g hAssembly.2.2
+            (Assembly.TotallyPositiveHasDecay g hAssembly) α β m n : ℝ → ℂ) :=
+        (MemLp.coeFn_toLp _).symm
+  refine (Assembly.frameSetConjecture_summable hyp1 hyp2 hyp3 g hAssembly hyp4.1.1 f).congr ?_
+  intro p
+  simp only [hAtom]
+
+
 theorem TPFrameSet
     {α β : ℝ} (hyp1 : 0 < α) (hyp2 : 0 < β) (hyp3 : α * β < 1)
     (g : ℝ → ℝ) (hyp4 : IsTPIntegrableContinuous g) :
