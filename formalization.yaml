@@ -10,9 +10,7 @@ project:
     new implication in the solution of the frame set problem for totally
     positive functions, which is Theorem 1.1 of the paper "Gabor Frames of
     Totally Positive Functions: A Complete Characterization" by de Dios Pont,
-    Gröchenig, Liehr, Shafkulovska and Taylor (arXiv:2608.04992). The converse
-    implication, namely that the frame property implies αβ < 1, is a classical
-    result and is not part of the formalization.
+    Gröchenig, Liehr, Shafkulovska and Taylor (arXiv:2608.04992).
   authors:
     - "Jaume de Dios Pont"
     - "Karlheinz Gröchenig"
